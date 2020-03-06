@@ -18,6 +18,7 @@ class Index extends CI_Controller {
 	{
 		$data['sliders'] = $this->ModMedia->get_media(0);
 		$data['profile'] = $this->ModProfile->get(6)->row();
+		$data['address'] = $this->ModProfile->get(7)->row();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$data['beritas']= $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
@@ -270,6 +271,8 @@ class Index extends CI_Controller {
 	{
 		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
 		$data['pengaduans']= $this->MyQuery->get('m_kategori_pengaduan');
+		$data['address'] = $this->ModProfile->get(7)->row();
+
 		// print_r($data['pengaduans']);
 		// die();
 		$this->template->load_u('_user_template', 'pengaduan', $data);

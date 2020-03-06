@@ -54,15 +54,20 @@
 
 					<div class="row clearfix common-height">
 
-						<div class="col-lg-3 col-md-6 dark center" style="background-color: #515875; padding-top: 60px; padding-bottom: 60px">
+						<div class="col-lg-12 col-md-12 dark center" style="background-color: #515875; padding-top: 20px; padding-bottom: 40px;">
 							<div>
-								<a href="<?php echo base_url('kegiatan'); ?>" style="color: white">
-									<i class="i-plain i-xlarge divcenter icon-line2-directions"></i>
-									<div class="counter counter-lined">KEGIATAN DESA</div>
-								</a>
+								<!-- <a href="<?php echo base_url('kegiatan'); ?>" style="color: white"> -->
+									<h3>
+										Search Our Product
+									</h3>
+								<div class="counter counter-lined" style="padding-right: 30%; padding-left: 30%;">
+									<input type="text" style="color: white;" class="form-control" placeholder="type enter to search" ></input>
+									<!-- <i class="i-plain i-xlarge divcenter icon-search" ></i> -->
+								</div>
+								<!-- </a> -->
 							</div>
 						</div>
-
+<!-- 
 						<div class="col-lg-3 col-md-6 dark center" style="background-color: #576F9E; padding-top: 60px; padding-bottom: 60px">
 							<div>
 								<a href="<?php echo base_url('galeri-desa'); ?>" style="color: white">
@@ -88,11 +93,11 @@
 									<div class="counter counter-lined">PORTAL PENGADUAN</div>
 								</a>
 							</div>
-						</div>
+						</div> -->
 
 					</div>
 
-					<div class="container clearfix">
+					<div class="container clearfix" style="padding-top: 40px;">
 
 						<div class="container nobottommargin">
 
@@ -139,7 +144,7 @@
 													<a href="<?php echo base_url('assets/upload/'.$berita->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/1583262062slide.jpg'); ?>" alt="Standard Post with Image"></a>
 												</div>
 												<div class="entry-title" align="center">
-													<h2  style="font-size: 15px"><a href="<?php echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"><?php echo $kategori->nama_kategori; ?></a></h2>
+													<h2  style="font-size: 15px"><a href="<?php //echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"><?php echo $kategori->nama_kategori; ?></a></h2>
 												</div>
 											</div>
 
@@ -158,7 +163,7 @@
 
 
 					</div>
-						 <?php $this->load->view('_partials_user/_sidebar_left'); ?> 
+						 <?php //$this->load->view('_partials_user/_sidebar_left'); ?> 
 
 				</div>
 

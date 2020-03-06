@@ -23,7 +23,7 @@
 
 	<!-- Document Title
 	============================================= -->
-	<title>Website Kecamatan Juntinyuat</title>
+	<title>Brainbox Equipment</title>
 
 </head>
 
@@ -46,8 +46,9 @@
 					<!-- Logo
 					============================================= -->
 					<div id="logo">
-						<a href="<?php echo base_url('/');?>" class="standard-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/Indramayu-white.png')?>"><img src="<?php echo base_url('assets/user_template/images/Indramayu.png'); ?>" alt="Canvas Logo"></a>
-						<a href="<?php echo base_url('/');?>" class="retina-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/Indramayu-white.png')?>"><img src="<?php echo base_url('assets/user_template/images/Indramayu.png'); ?>" alt="Canvas Logo"></a>
+						<h3 style="font-family: 'Fugaz One',sans-serif; margin-top: 10px;">Brainbox Equipment</h3>
+						<!-- <a href="<?php echo base_url('/');?>" class="standard-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/brainbox.png')?>"><img src="<?php echo base_url('assets/user_template/images/brainbox.png'); ?>" alt="Canvas Logo"></a>
+						<a href="<?php echo base_url('/');?>" class="retina-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/brainbox.png')?>"><img src="<?php echo base_url('assets/user_template/images/brainbox.png'); ?>" alt="Canvas Logo"></a> -->
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation
@@ -56,10 +57,10 @@
 
 						<ul>
 							<li class="current"><a href="<?php echo base_url(); ?>"><div>Home</div></a></li>
-							<li class="current"><a href="<?php echo base_url(); ?>"><div>Profile</div></a></li>
+							<!-- <li class="current"><a href="<?php echo base_url(); ?>"><div>Profile</div></a></li> -->
 							<li class="current"><a href="#"><div>Products <i class="icon-angle-down"></i></div></a>
 								<ul>
-									<li><a href="<?php echo base_url('berita');?>"><div>Show All Product</div></a></li>
+									<li><a href="<? //php echo base_url('berita');?>"><div>Show All Product</div></a></li>
 									<!-- <li><a href="<?php echo base_url('galeri-desa');?>"><div>Galeri Desa</div></a></li>
 									<li><a href="<?php echo base_url('peraturan-desa');?>"><div>Peraturan Desa</div></a></li>
 									<li><a href="<?php echo base_url('anggaran-desa');?>"><div>Anggaran Desa</div></a></li>
@@ -68,19 +69,20 @@
 									<li><a href="<?php echo base_url('buruh-migran');?>"><div>Buruh Migran</div></a></li> -->
 								</ul>
 							</li>
-							<li class="current"><a href="<?php echo base_url('artikel');?>"><div>Article</div></a></li>
+							<!-- <li class="current"><a href="<?php echo base_url('artikel');?>"><div>Article</div></a></li> -->
 							<!-- <li class="current"><a href="<?php echo base_url('peraturan-desa');?>"><div>Term and Condition</div></a></li> -->
 							<li class="current"><a href="<?php echo base_url('pengaduan');?>"><div>Register/Login</div></a></li>
 						</ul>
 
 						<!-- Top Search
 						============================================= -->
-						<div id="top-search">
+						<!-- <div id="top-search">
 							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
 							<form action="<?php echo base_url('berita/');?>" method="get">
 								<input type="text" name="search" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
 							</form>
-						</div><!-- #top-search end -->
+						</div> -->
+						<!-- #top-search end -->
 
 					</nav><!-- #primary-menu end -->
 

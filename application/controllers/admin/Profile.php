@@ -33,8 +33,8 @@ class Profile extends CI_Controller {
 		if ( ! $this->upload->do_upload('foto'))
 		{
 			 $error = array('error' => $this->upload->display_errors());
-			 print_r($error);
-			 die();
+			//  print_r($error);
+			//  die();
 		}
 		$data = array(
 			'konten' => $this->input->post('konten'),
