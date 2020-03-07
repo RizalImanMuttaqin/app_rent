@@ -74,7 +74,7 @@
 						<?php echo $this->session->flashdata('info'); ?>
 					</div>
 					
-					<div class="fancy-title title-dotted-border">
+					<div class="fancy-title title-dotted-border" >
 						<h3>Login</h3>
 					</div>
 					

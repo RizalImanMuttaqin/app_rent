@@ -45,53 +45,50 @@
 								</div>
 							</div>
 
+							<div class="container clearfix" style="padding-top: 40px;">
 
-							<div class="clearfix">
-							<!-- Single Post
-								============================================= -->
-								<!-- Entry Title
-									============================================= -->
-									<!-- <div class="entry-title">
-										<h2>Our Product</h2>
-									</div> -->
-									<!-- .entry-title end -->
-
-								<!-- Entry Meta
-									============================================= -->
-								
-									<?php foreach ($data as $kategori) : ?>
-									<div class="fancy-title title-border">
-										<h3>Kategori Berita <?php echo $kategori->nama_kategori; ?></h3>
-									</div>
-									<div id="oc-images" class="owl-carousel image-carousel carousel-widget  bottommargin-sm" data-margin="30" data-nav="false" data-items-xs="1" data-items-sm="2" data-items-md="3" data-items-xl="4">
-										<?php $ndatas = $this->ModBerita->get_berita_id($kategori->id_kategori); ?>
-
-										<?php foreach ($ndatas as $ndata) : ?>
-										<div class="oc-item">
-											<div class="ipost clearfix">
-												<div class="entry-image">
-													<a href="read_more_detail.html"><img class="image_fade" src="<?php echo base_url('assets/upload/'.$ndata->foto);?>" alt="Image"></a>
-												</div>
-												<div class="entry-title">
-													<h4><a href="<?php echo base_url('index/detail_berita/'.$ndata->id_berita) ?>"><?php echo $ndata->judul; ?></a></h4>
-												</div>
-												<ul class="entry-meta clearfix">
-													<li><i class="icon-calendar3"></i><?php echo date('d-m-Y', strtotime($ndata->date_created)); ?></li>
-												</ul>
+								<div class="container nobottommargin">
+		
+									<div class="col_full clearfix">
+										<div id="posts">
+		
+											<div class="entry clearfix" >
+												<?php //foreach ($kategoris as $kategori) : 
+													for($i=1; $i<=12; $i++) :
+												?>
+		
+													<div class="col_one_third col_last" >
+														<div class="entry-title" align="center">
+															<h2  style="font-size: 15px"><a href="<?php //echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"> ARRI ALEXA MINI LF <?php //echo $kategori->nama_kategori; ?></a></h2>
+														</div>
+														<div class="entry-image" style="margin-bottom:10px;">
+															<a href="<?php //echo base_url('assets/upload/'.$berita->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/1583262062slide.jpg'); ?>" alt="Standard Post with Image"></a>
+														</div>
+														<div class="entry-title" style="padding-left: 20px; padding-right: 20px;">
+															<button type="button" class="btn btn-secondary form-control">RENT PRODUCT</button>
+															<!-- <h2  style="font-size: 15px"><a href="<?php //echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"> ARRI ALEXA MINI LF <?php //echo $kategori->nama_kategori; ?></a></h2> -->
+														</div>
+													</div>
+		
+												<?php 
+												endfor;
+												//endforeach; ?>
 											</div>
+		
 										</div>
-										<?php endforeach; ?>
-
-
+		
+		
+		
+		
 									</div>
-									<div class="clear"></div>
-									<?php endforeach; ?>
-
-								<!-- Entry Content
-									============================================= -->
-
-
+		
 								</div>
+		
+		
+		
+							</div>
+
+							
 
 							</div><!-- .postcontent end -->
 

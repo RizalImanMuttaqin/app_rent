@@ -7,8 +7,9 @@
 							<div class="swiper-slide dark" style="background-image: url('<?php echo base_url('assets/upload/'.$slide->filename); ?>');">
 								<div class="container clearfix">
 									<div class="slider-caption slider-caption-center">
-										<h2 data-caption-animate="fadeInUp"><?php echo $slide->judul ?></h2>
-										<p class="d-none d-sm-block" data-caption-animate="fadeInUp" data-caption-delay="200"><?php echo $slide->keterangan ?></p>
+										<h2 data-caption-animate="fadeInUp" style="-webkit-text-stroke: 1.5px black;"><?php echo $slide->judul ?></h2>
+										<h3 type="button" style="margin-top: 20px; font-weight: bold;"  data-caption-animate="fadeInUp" data-caption-delay="200" disabled class="btn btn-dark "><?php echo $slide->keterangan ?></h3>
+										<!-- <h3 class="d-none d-sm-block"  style="-webkit-text-stroke: 0.8px black; font-weight: bold;"><?php echo $slide->keterangan ?></h3> -->
 									</div>
 								</div>
 							</div>
