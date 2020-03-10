@@ -231,6 +231,8 @@ class Index extends CI_Controller {
 		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
+		$data['address'] = $this->ModProfile->get(7)->row();
+
 		if($this->input->get('search') != '' ){
 			// // print_r($data['data']);
 			$data['data']= $this->ModBerita->get_search($this->input->get('search'));
@@ -261,6 +263,8 @@ class Index extends CI_Controller {
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$data['data']= $this->MyQuery->get_by_id('t_berita', 'id_berita', $id);
+		$data['address'] = $this->ModProfile->get(7)->row();
+
 		$data['id']='id_berita';
 		// print_r($data['data']);
 		// die();

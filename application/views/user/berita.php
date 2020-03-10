@@ -65,7 +65,7 @@
 															<a href="<?php //echo base_url('assets/upload/'.$berita->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/1583262062slide.jpg'); ?>" alt="Standard Post with Image"></a>
 														</div>
 														<div class="entry-title" style="padding-left: 20px; padding-right: 20px;">
-															<button type="button" class="btn btn-secondary form-control">RENT PRODUCT</button>
+															<a  href="<?php echo base_url('index/detail_berita/10'); ?>" class="btn btn-secondary form-control">RENT PRODUCT</a>
 															<!-- <h2  style="font-size: 15px"><a href="<?php //echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"> ARRI ALEXA MINI LF <?php //echo $kategori->nama_kategori; ?></a></h2> -->
 														</div>
 													</div>

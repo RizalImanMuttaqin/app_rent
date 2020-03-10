@@ -22,44 +22,44 @@
         <li class="<?php echo ($this->uri->segment(2)=='profile') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/profile')?>">
             <i class="fa fa-files-o"></i>
-            <span>Profile Desa</span>
+            <span>Company Profile</span>
           </a>
         </li>
         <li class="<?php echo ($this->uri->segment(2)=='berita') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/berita')?>">
             <i class="fa fa-files-o"></i>
-            <span>Berita Desa</span>
+            <span>Products</span>
           </a>
         </li>
-        <li class="<?php echo ($this->uri->segment(2)=='artikel') ? 'active' : '';?>">
+        <!-- <li class="<?php echo ($this->uri->segment(2)=='artikel') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/artikel')?>">
             <i class="fa fa-files-o"></i>
             <span>Artikel Desa</span>
           </a>
-        </li>
-        <li class="<?php echo ($this->uri->segment(2)=='kegiatan') ? 'active' : '';?>">
+        </li> -->
+        <!-- <li class="<?php echo ($this->uri->segment(2)=='kegiatan') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/kegiatan')?>">
             <i class="fa fa-files-o"></i>
             <span>Kegiatan Desa</span>
           </a>
-        </li>
+        </li> -->
         <li class="<?php echo ($this->uri->segment(2)=='media') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/media')?>">
             <i class="fa fa-files-o"></i>
-            <span>Media Desa</span>
+            <span>Media</span>
           </a>
         </li>
-        <li class="<?php echo ($this->uri->segment(2)=='pengaduan') ? 'active' : '';?>">
+        <!-- <li class="<?php echo ($this->uri->segment(2)=='pengaduan') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/pengaduan')?>">
             <i class="fa fa-files-o"></i>
-            <span>Pengaduan</span>
+            <span>Transaction</span>
             <span class="pull-right-container">
               <?php if ($notif = $this->MyQuery->getNotif() != 0) :?>
               <small class="label pull-right bg-red"><?php echo $notif; ?></small>
               <?php endif; ?>
             </span>
           </a>
-        </li>
+        </li> -->
     </section>
     <!-- /.sidebar -->
   </aside>
