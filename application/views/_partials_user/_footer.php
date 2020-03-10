@@ -9,17 +9,19 @@
 
 				<div class="container clearfix" style="color: white;">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-6 col-sm-12">
 							<iframe src="https://maps.google.com/maps?q=Jalan%20DD%20Menteng%20Dalam%20Tebet%20Kota%20Jakarta%20Selatan%20DKI%20Jakarta%2012870%20Indonesia&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0; width: 450px; height: 300px;" allowfullscreen></iframe>
 						</div>
 						<!-- .entry-image end -->
 						
 						<div class="col-md-6">
-	
+							<span>
 								<?php echo $address->konten; ?>
-								
+							</span>
 						</div>
-	
+					</div>
+
+					<div class="row">
 						<div class="col-md-6">
 							Copyrights &copy; 2020 RIM.<br>
 						</div>

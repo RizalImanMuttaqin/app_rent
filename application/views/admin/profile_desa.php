@@ -3,7 +3,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Profile Desa
+      Company Profile
       <!-- <small>Advanced form element</small> -->
     </h1>
     <div style="padding-top: 10px">
@@ -11,8 +11,7 @@
     </div>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-      <li><a href="#">Forms</a></li>
-      <li class="active">Editors</li>
+      <li class="active"> Company Profile</li>
     </ol>
   </section>
 

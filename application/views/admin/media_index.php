@@ -107,77 +107,7 @@
       <!-- /.row -->
     </section>
 
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <!-- /.box -->
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">
-                Tambah File Anggaran
-              </h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- <div class="clearfix"></div> -->
-            <div class="box-body">
-              <form action="<?php echo base_url('admin/media/addAnggaran');?>" class="" method="post" enctype="multipart/form-data" style="padding-bottom: 30px">
-                <div class="row">
-                  <div class="col-md-4">
-                    <label>Keterangan : </label>
-                    <textarea name="keterangan" class="form-control" rows="3"></textarea>
-                  </div>
-                  <!-- <div class="col-md-6"><label></label></div> -->
-                  <div class="col-md-4" style="padding-top: 30px">
-                    <!-- <label>Masukan Gambar : </label> -->
-                    <input class="pull-right" type="file" required="required" name="foto">
-                  </div>
-                  <div class="col-md-3" style="padding-top: 30px">
-                    <button type="submint" class="btn btn-primary pull-left">Tambah</button>
-                  </div>
-                </div>
-              </form>
 
-              <table id="example" class="table table-bordered table-striped" ">
-                <thead>
-                  <tr>
-                    <!-- <th style="width: 20%">gambar</th> -->
-                    <th>File</th>
-                    <th>Keterangan</th>
-                    <th>Tanggal Upload</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($anggarans as $anggaran) : ?>
-                    <tr>
-                      <td>
-                        <a href="<?php echo base_url('admin/media/download/'.$anggaran->filename)?>">
-                          <?php echo $anggaran->filename; ?>
-                        </a>
-                      </td>
-                      <td id="t_keterangan"><?php echo $anggaran->keterangan ?></td>
-                      <td><?php echo date('d-m-Y h:i:s', strtotime($anggaran->date_created)); ?></td>
-                      <!-- <input id="tb_id_media" value="<?php echo $anggaran->id_media ?>"> -->
-                      <input type="hidden" id="t_id_media" value="<?php echo $anggaran->id_media ?>">
-
-                      <td><a href="<?php echo base_url('admin/media/deleteMedia/'.$anggaran->id_media);?>" title="Hapus" class="btn btn-danger confirmation"><span class="fa fa-trash"></span></a>
-                        <a title="Edit Artikel" class="btn btn-warning editModal">
-                          <span class="fa fa-edit"></span>
-                        </a>
-                      </td>
-                    </tr>
-                  <?php endforeach;?>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.box-body -->
-          </div>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-    </section>
 
     <section class="content">
       <div class="row">

@@ -7,8 +7,9 @@
 							<div class="swiper-slide dark" style="background-image: url('<?php echo base_url('assets/upload/'.$slide->filename); ?>');">
 								<div class="container clearfix">
 									<div class="slider-caption slider-caption-center">
-										<h2 data-caption-animate="fadeInUp"><?php echo $slide->judul ?></h2>
-										<p class="d-none d-sm-block" data-caption-animate="fadeInUp" data-caption-delay="200"><?php echo $slide->keterangan ?></p>
+										<h2 data-caption-animate="fadeInUp" style="-webkit-text-stroke: 1.5px black;"><?php echo $slide->judul ?></h2>
+										<h3 type="button" style="margin-top: 20px; font-weight: bold;"  data-caption-animate="fadeInUp" data-caption-delay="200" disabled class="btn btn-dark "><?php echo $slide->keterangan ?></h3>
+										<!-- <h3 class="d-none d-sm-block"  style="-webkit-text-stroke: 0.8px black; font-weight: bold;"><?php echo $slide->keterangan ?></h3> -->
 									</div>
 								</div>
 							</div>
@@ -141,10 +142,10 @@
 
 											<div class="col_one_third col_last" style="padding: 10px">
 												<div class="entry-image">
-													<a href="<?php echo base_url('assets/upload/'.$berita->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/1583262062slide.jpg'); ?>" alt="Standard Post with Image"></a>
+													<a href="<?php echo base_url('index/berita'); ?>" ><img class="image_fade" src="<?php echo base_url('assets/upload/1583262062slide.jpg'); ?>" alt="Standard Post with Image"></a>
 												</div>
 												<div class="entry-title" align="center">
-													<h2  style="font-size: 15px"><a href="<?php //echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"><?php echo $kategori->nama_kategori; ?></a></h2>
+													<h2  style="font-size: 15px"><a href="<?php echo base_url('index/berita'); //echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"><?php echo $kategori->nama_kategori; ?></a></h2>
 												</div>
 											</div>
 

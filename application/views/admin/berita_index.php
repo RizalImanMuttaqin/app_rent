@@ -2,15 +2,15 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Berita Desa
+        Product
       </h1>
       <div style="padding-top: 10px">
         <?php echo $this->session->flashdata('info'); ?>
       </div>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Tables</a></li>
-        <li class="active">Data tables</li>
+        <!-- <li><a href="#">Tables</a></li> -->
+        <li class="active">Product</li>
       </ol>
     </section>
 
@@ -20,7 +20,7 @@
           <div class="box box-info">
             <div class="box-header">
               <h3 class="box-title">
-                Tambah Berita Desa
+                Add Product
               </h3>
               <!-- tools box -->
               <div class="pull-right box-tools">
@@ -35,11 +35,11 @@
                 <form action="<?php echo base_url('admin/berita/addBerita');?>" method="post" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-md-6">
-                      <label>Judul Berita : </label>
+                      <label> : </label>
                       <input type="text" name="judul" class="form-control">
                     </div>
                     <div class="col-md-6">
-                      <label>Kategori Berita : </label>
+                      <label>Product Category : </label>
                       <select id="" name="id_kategori" class="form-control select2" style="width: 100%;">
                         <?php foreach ($kategoris as $kategori) : ?>
                           <option value="<?php echo $kategori->id_kategori; ?>"><?php echo $kategori->nama_kategori; ?></option>
@@ -85,26 +85,26 @@
           <!-- /.box -->
           <div class="box">
             <div class="box-header">
-              <h5>Tambah Kategori Berita</h5>
+              <h5>Add Product Category</h5>
               <form class="form-inline" method="post" action="<?php echo base_url('admin/berita/addKategori')?>">
                 <div class="form-group">
-                  <label>Nama Kategori : </label>
+                  <label>Category : </label>
                   <input required="required" name="nama" type="text" class="form-control">
                 </div>
                 <div class="form-group pull-right">
-                  <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#tambah_kategori" aria-expanded="false" aria-controls=""><span class="fa fa-eye"></span> Lihat Kategori</button>
+                  <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#tambah_kategori" aria-expanded="false" aria-controls=""><span class="fa fa-eye"></span> View Category</button>
                 </div>
                 <div class="form-group pull-right" style="padding-right: 30px">
-                  <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Tambah Kategori</button>
+                  <button type="submit" class="btn btn-primary"><span class="fa fa-save"></span> Add Category</button>
                 </div>
               </form>
               <div class="collapse" id="tambah_kategori" style="padding-top: 20px">
                 <div class="well">
-                  <h5>Kategori Berita</h5>
+                  <h5>Product Category</h5>
                   <table  class="table table-bordered table-striped">
                     <thead>
                       <tr>
-                        <th style="width: 80%">Nama Kategori Berita</th>
+                        <th style="width: 80%">Category Product</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -120,14 +120,14 @@
                             <div class="modal-content">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h4 class="modal-title" id="myModalLabel">Edit Kategori Berita</h4>
+                                <h4 class="modal-title" id="myModalLabel">Edit Product Category</h4>
                               </div>
                               <form method="post" action="<?php echo base_url('admin/berita/updateKategori/'.$kategori->id_kategori)?>">
                                 <div class="modal-body">
                                   <input type="text" name="nama" class="form-control" value="<?php echo $kategori->nama_kategori ?>">
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+                                  <button type="submit" class="btn btn-primary">Save Changes</button>
                                 </div>
                               </form>
                             </div>
@@ -142,14 +142,16 @@
             <!-- /.box-header -->
             <!-- <div class="clearfix"></div> -->
             <div class="box-body">
-              <button style="margin-bottom: 20px; margin-top: 15px" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tambah_berita" aria-expanded="false" aria-controls=""><span class="fa fa-plus"></span> Tambah Berita</button>
+              <button style="margin-bottom: 20px; margin-top: 15px" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tambah_berita" aria-expanded="false" aria-controls=""><span class="fa fa-plus"></span> Add Product</button>
               <table id="example" class="table table-bordered table-striped" ">
                 <thead>
                   <tr>
-                    <th>Judul Berita</th>
-                    <th>Kategori</th>
-                    <th style="width: 40%">Konten</th>
-                    <th>Waktu Posting</th>
+                    <th>Product Title</th>
+                    <th>Category</th>
+                    <th style="width: 40%">Content</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Date Post</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -161,6 +163,8 @@
                       <td id="t_judul"><?php echo $berita->judul ?></td>
                       <td id="t_nama_kategori"><?php echo $berita->nama_kategori ?></td>
                       <td id="t_konten"><?php echo htmlspecialchars($berita->konten) ?></td>
+                      <td>7.500.000</td>
+                      <td>10</td>
                       <td><?php echo date('d-m-Y h:i:s', strtotime($berita->date_created)); ?></td>
                       <td><a href="<?php echo base_url('admin/berita/deleteBerita/'.$berita->id_berita);?>" title="Hapus" class="btn btn-danger confirmation"><span class="fa fa-trash"></span></a>
                         <a title="Edit Berita" class="btn btn-warning editModal">
@@ -199,7 +203,7 @@
                 <div class="box box-info">
                   <div class="box-header">
                     <h3 class="box-title">
-                      Ubah Berita Desa
+                      Ubah Product
                     </h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
@@ -211,12 +215,12 @@
                       <form action="<?php echo base_url('admin/berita/updateBerita');?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                           <div class="col-md-6">
-                            <label>Judul Berita : </label>
+                            <label>Add Product : </label>
                             <input type="hidden" id="id_berita" name="id_berita">
                             <input type="text" id="judul" name="judul" class="form-control">
                           </div>
                           <div class="col-md-6">
-                            <label>Kategori Berita : </label>
+                            <label>Product Category : </label>
                             <select id="id_kategori" name="id_kategori" class="form-control select2" style="width: 100%;">
                               <?php foreach ($kategoris as $kategori) : ?>
                                 <option value="<?php echo $kategori->id_kategori; ?>"><?php echo $kategori->nama_kategori; ?></option>
@@ -241,7 +245,7 @@
                   </textarea>
                 </div>
                 <div class="col-md-12" style="padding-top: 30px">
-                  <button type="submint" class="btn btn-primary pull-right">Simpan</button>
+                  <button type="submint" class="btn btn-primary pull-right">Save Changes</button>
                 </div>
               </form>
             </div>
