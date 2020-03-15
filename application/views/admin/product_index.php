@@ -32,10 +32,10 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body pad">
-                <form action="<?php echo base_url('admin/berita/addBerita');?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo base_url('admin/product/addProduct');?>" method="post" enctype="multipart/form-data">
                   <div class="row">
                     <div class="col-md-6">
-                      <label> : </label>
+                      <label>Product Name : </label>
                       <input type="text" name="judul" class="form-control">
                     </div>
                     <div class="col-md-6">
@@ -45,6 +45,14 @@
                           <option value="<?php echo $kategori->id_kategori; ?>"><?php echo $kategori->nama_kategori; ?></option>
                         <?php endforeach; ?>
                       </select>
+                    </div>
+                    <div class="col-md-6" style="padding-top: 10px;">
+                      <label>Rent Price / Day (IDR) : </label>
+                      <input type="text" name="harga_sewa" class="form-control formatNumbers">
+                    </div>
+                    <div class="col-md-6" style="padding-top: 10px;">
+                      <label>Product Stock : </label>
+                      <input type="text" name="stock" class="form-control formatNumbers">
                     </div>
                   </div>
                   <div class="row" style="padding-top: 30px; padding-bottom: 30px">
@@ -66,7 +74,7 @@
                   </textarea>
                 </div>
                 <div class="col-md-12" style="padding-top: 30px">
-                  <button type="submint" class="btn btn-primary pull-right">Simpan</button>
+                  <button type="submint" class="btn btn-primary pull-right">Submit</button>
                 </div>
               </form>
             </div>
@@ -86,10 +94,14 @@
           <div class="box">
             <div class="box-header">
               <h5>Add Product Category</h5>
-              <form class="form-inline" method="post" action="<?php echo base_url('admin/berita/addKategori')?>">
-                <div class="form-group">
+              <form class="form-inline" enctype="multipart/form-data" method="post" action="<?php echo base_url('admin/product/addKategori')?>">
+                <div class="form-group" style="padding-right: 20px;">
                   <label>Category : </label>
                   <input required="required" name="nama" type="text" class="form-control">
+                  </div>
+                  <div class="form-group">
+                  <label>Category Image : </label>
+                  <input id="imgInp" class="pull-right" type="file" name="foto">
                 </div>
                 <div class="form-group pull-right">
                   <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#tambah_kategori" aria-expanded="false" aria-controls=""><span class="fa fa-eye"></span> View Category</button>
@@ -105,14 +117,16 @@
                     <thead>
                       <tr>
                         <th style="width: 80%">Category Product</th>
-                        <th>Action</th>
+                        <th colspan="2">Action</th>
                       </tr>
                     </thead>
                     <tbody>
                       <?php foreach ($kategoris as $kategori) : ?>
                         <tr>
                           <td><?php echo $kategori->nama_kategori ?></td>
-                          <td><button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#edit_modal_<?php echo $kategori->id_kategori ?>"><span class="fa fa-edit"></span> Ubah</button>
+                          <td><button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#edit_modal_<?php echo $kategori->id_kategori ?>"><span class="fa fa-edit"></span> Edit</button>
+                            <td><a href="<?php echo base_url('admin/product/deleteKategori/'.$kategori->id_kategori);?>" title="Delete" class="btn btn-danger btn-xs confirmation"><span class="fa fa-trash">Delete</span></a>
+                            </td>
                           </td>
                         </tr>
                         <div class="modal fade" id="edit_modal_<?php echo $kategori->id_kategori ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -122,9 +136,19 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel">Edit Product Category</h4>
                               </div>
-                              <form method="post" action="<?php echo base_url('admin/berita/updateKategori/'.$kategori->id_kategori)?>">
+                              <form method="post" enctype="multipart/form-data" action="<?php echo base_url('admin/product/updateKategori/'.$kategori->id_kategori)?>">
                                 <div class="modal-body">
+                                  <label>Category :</label>
                                   <input type="text" name="nama" class="form-control" value="<?php echo $kategori->nama_kategori ?>">
+                                  <br>
+                                  <div class="col-md-12" style="padding: 0px 10px, 0px 10px;">
+                                    <div class="thumbnail">
+                                      <img id="m_foto_"  src="<?php echo base_url('assets/upload/'. $kategori->image) ?>" class="">
+                                    </div>
+                                  </div>
+                                  <br>
+                                  <label>Update Image</label>
+                                  <input id="imgInp" class="" type="file" name="foto">
                                 </div>
                                 <div class="modal-footer">
                                   <button type="submit" class="btn btn-primary">Save Changes</button>
@@ -159,14 +183,14 @@
                   <?php foreach ($beritas as $berita) : ?>
                     <tr>
                       <input type="hidden" id="t_foto" value="<?php echo $berita->foto ?>">
-                      <input type="hidden" id="t_id_berita" value="<?php echo $berita->id_berita ?>">
+                      <input type="hidden" id="t_id_product" value="<?php echo $berita->id_product ?>">
                       <td id="t_judul"><?php echo $berita->judul ?></td>
                       <td id="t_nama_kategori"><?php echo $berita->nama_kategori ?></td>
                       <td id="t_konten"><?php echo htmlspecialchars($berita->konten) ?></td>
-                      <td>7.500.000</td>
-                      <td>10</td>
+                      <td><?=number_format($berita->harga_sewa, 0,",",".")?></td>
+                      <td><?=number_format($berita->stock, 0,",",".")?></td>
                       <td><?php echo date('d-m-Y h:i:s', strtotime($berita->date_created)); ?></td>
-                      <td><a href="<?php echo base_url('admin/berita/deleteBerita/'.$berita->id_berita);?>" title="Hapus" class="btn btn-danger confirmation"><span class="fa fa-trash"></span></a>
+                      <td><a href="<?php echo base_url('admin/product/deleteProduct/'.$berita->id_product);?>" title="Hapus" class="btn btn-danger confirmation"><span class="fa fa-trash"></span></a>
                         <a title="Edit Berita" class="btn btn-warning editModal">
                           <span class="fa fa-edit"></span>
                         </a>
@@ -188,7 +212,7 @@
   </div>
 
 
-
+<!-- EDIT PRODUCT -->
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -203,7 +227,7 @@
                 <div class="box box-info">
                   <div class="box-header">
                     <h3 class="box-title">
-                      Ubah Product
+                      Edit Product
                     </h3>
                     <!-- tools box -->
                     <div class="pull-right box-tools">
@@ -212,11 +236,11 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body pad">
-                      <form action="<?php echo base_url('admin/berita/updateBerita');?>" method="post" enctype="multipart/form-data">
+                      <form action="<?php echo base_url('admin/product/updateProduct');?>" method="post" enctype="multipart/form-data">
                         <div class="row">
                           <div class="col-md-6">
-                            <label>Add Product : </label>
-                            <input type="hidden" id="id_berita" name="id_berita">
+                            <label>Product Name : </label>
+                            <input type="hidden" id="id_product" value="<?=$berita->id_product?>" name="id_product">
                             <input type="text" id="judul" name="judul" class="form-control">
                           </div>
                           <div class="col-md-6">
@@ -226,6 +250,14 @@
                                 <option value="<?php echo $kategori->id_kategori; ?>"><?php echo $kategori->nama_kategori; ?></option>
                               <?php endforeach; ?>
                             </select>
+                          </div>
+                          <div class="col-md-6" style="padding-top: 10px;">
+                            <label>Rent Price / Day (IDR) : </label>
+                            <input type="text" name="harga_sewa" value='<?=number_format($berita->harga_sewa, 0,",",".")?>' class="form-control formatNumbers">
+                          </div>
+                          <div class="col-md-6" style="padding-top: 10px;">
+                            <label>Product Stock : </label>
+                            <input type="text" value='<?=number_format($berita->stock, 0,",",".")?>' name="stock" class="form-control formatNumbers">
                           </div>
                         </div>
                         <div class="row" style="padding-top: 30px; padding-bottom: 30px">

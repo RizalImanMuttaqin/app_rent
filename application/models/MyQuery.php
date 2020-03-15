@@ -1,11 +1,20 @@
 <?php 
 class MyQuery extends CI_Model {
 
-        public function get($table)
+        public function get($table, $param = [])
         {
                 if ($table=='t_pengaduan') {
                         // $this->db->select('m_kategori_pengaduan.nama_kategori as kategori');
                         $this->db->join('m_kategori_pengaduan', 'm_kategori_pengaduan.id_kategori_pengaduan = t_pengaduan.id_kategori');
+                }
+
+                if($table == "t_product"){
+                        if($param['category'])
+                                $this->db->where('t_product.id_kategori =', $param['category']);
+                        if($param['search'])
+                                $this->db->where("t_product.judul LIKE '%".$param['search']."%'");
+
+                        // $this->db->join('m_kategori', 'm_kategori.id_kategori = t_product.id_kategori');
                 }
                 $this->db->order_by($table.".date_created", "desc");
                 $query = $this->db->get($table);
@@ -16,8 +25,8 @@ class MyQuery extends CI_Model {
         public function get_by_id($table, $pk, $id)
         {
                 $this->db->where($pk.'=', $id);
-                if($table == "t_berita"){
-                        $this->db->join('m_kategori_berita', 'm_kategori_berita.id_kategori = t_berita.id_kategori');
+                if($table == "t_product"){
+                        $this->db->join('m_kategori', 'm_kategori.id_kategori = t_product.id_kategori');
                 }
                 $this->db->order_by($table.".date_created", "desc");
                 $query = $this->db->get($table);
@@ -28,9 +37,9 @@ class MyQuery extends CI_Model {
         {
                 $this->db->select('*');
                 $this->db->from($table);
-                if($table == "t_berita"){
-                        $this->db->where('t_berita.id_kategori !=', '0');
-                        $this->db->join('m_kategori_berita', 'm_kategori_berita.id_kategori = t_berita.id_kategori');
+                if($table == "t_product"){
+                        $this->db->where('t_product.id_kategori !=', '0');
+                        $this->db->join('m_kategori', 'm_kategori.id_kategori = t_product.id_kategori');
                 }
                 if ($limit != false) {
                         $this->db->limit($limit);

@@ -6,7 +6,7 @@
 			<div class="flexslider">
 				<div class="slider-wrap">
 					<?php foreach ($newss as $news) : ?>
-						<div class="slide"><a href="<?php echo base_url('index/detail_berita/'.$news->id_berita);?>"><strong><?php echo $news->judul; ?></strong></a></div>
+						<div class="slide"><a href="<?php echo base_url('index/detail_product/'.$news->id_product);?>"><strong><?php echo $news->judul; ?></strong></a></div>
 					<?php endforeach; ?>
 				</div>
 			</div>

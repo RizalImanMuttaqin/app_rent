@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : local
- Source Server Type    : MySQL
+ Source Server         : __LOCAL
+ Source Server Type    : MariaDB
  Source Server Version : 100322
  Source Host           : localhost:3306
  Source Schema         : market_rent
 
- Target Server Type    : MySQL
+ Target Server Type    : MariaDB
  Target Server Version : 100322
  File Encoding         : 65001
 
- Date: 06/03/2020 22:01:04
+ Date: 16/03/2020 00:43:26
 */
 
 SET NAMES utf8mb4;
@@ -38,27 +38,23 @@ INSERT INTO `m_admin` VALUES (1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', NU
 COMMIT;
 
 -- ----------------------------
--- Table structure for m_kategori_berita
+-- Table structure for m_kategori
 -- ----------------------------
-DROP TABLE IF EXISTS `m_kategori_berita`;
-CREATE TABLE `m_kategori_berita` (
+DROP TABLE IF EXISTS `m_kategori`;
+CREATE TABLE `m_kategori` (
   `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(255) DEFAULT NULL,
   `date_created` datetime DEFAULT NULL,
   `date_updated` datetime DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_kategori`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
--- Records of m_kategori_berita
+-- Records of m_kategori
 -- ----------------------------
 BEGIN;
-INSERT INTO `m_kategori_berita` VALUES (1, 'test12', '2019-01-02 12:16:56', '2019-01-02 11:04:45');
-INSERT INTO `m_kategori_berita` VALUES (3, 'wqw', '2019-01-02 12:31:10', '2019-01-02 12:31:18');
-INSERT INTO `m_kategori_berita` VALUES (4, 're', '2019-01-02 01:17:23', '2019-01-02 01:17:23');
-INSERT INTO `m_kategori_berita` VALUES (5, 'Rizal', '2019-01-02 11:00:40', '2019-01-02 11:00:40');
-INSERT INTO `m_kategori_berita` VALUES (6, 'test pengaduan', '2019-01-06 06:52:26', '2019-01-06 06:52:26');
-INSERT INTO `m_kategori_berita` VALUES (7, 'Buruh Migran', NULL, NULL);
+INSERT INTO `m_kategori` VALUES (18, 'CAMERA', '2020-03-15 04:22:55', '2020-03-15 05:42:16', '1584294136kategori.jpg');
 COMMIT;
 
 -- ----------------------------
@@ -126,40 +122,6 @@ CREATE TABLE `t_artikel` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `t_artikel` VALUES (6, 'xxxx', '<p>xxx</p>\r\n', '1546609608artikel.jpg', '1', '2019-01-02 11:29:33', '2019-01-04 02:46:48');
-COMMIT;
-
--- ----------------------------
--- Table structure for t_berita
--- ----------------------------
-DROP TABLE IF EXISTS `t_berita`;
-CREATE TABLE `t_berita` (
-  `id_berita` int(11) NOT NULL AUTO_INCREMENT,
-  `id_kategori` int(11) DEFAULT NULL,
-  `judul` varchar(255) DEFAULT NULL,
-  `konten` text DEFAULT NULL,
-  `foto` varchar(255) DEFAULT NULL,
-  `created_by` varchar(255) DEFAULT NULL,
-  `date_created` datetime DEFAULT NULL,
-  `date_updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_berita`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
--- ----------------------------
--- Records of t_berita
--- ----------------------------
-BEGIN;
-INSERT INTO `t_berita` VALUES (1, 0, 'test buruh ', '<p>test buruh 1</p>\r\n', '1546610419berita.jpg', '1', '2019-01-04 03:00:19', '2019-01-04 03:00:19');
-INSERT INTO `t_berita` VALUES (3, 0, 'test buruh ', '<p>test buruh 1</p>\r\n', '1546610419berita.jpg', '1', '2019-01-04 03:00:19', '2019-01-04 03:00:19');
-INSERT INTO `t_berita` VALUES (5, 5, 'wwww111111', '<p>11111</p>\r\n', '1546424446berita.jpg', '1', '2019-01-02 04:32:58', '2019-01-02 11:20:46');
-INSERT INTO `t_berita` VALUES (7, 5, 're', '<p>ter</p>\r\n', '1546424462berita.jpg', '1', '2019-01-02 10:00:49', '2019-01-02 11:21:02');
-INSERT INTO `t_berita` VALUES (8, 4, 'dfda', '<p>dfdaf</p>\r\n', '1546422002berita.jpg', '1', '2019-01-02 10:35:24', '2019-01-02 10:40:02');
-INSERT INTO `t_berita` VALUES (9, 3, '1', '<p>1</p>\r\n', '1546456382berita.jpg', '1', '2019-01-02 11:28:25', '2019-01-02 08:13:02');
-INSERT INTO `t_berita` VALUES (10, 4, '11111111', '<p>1111</p>\r\n', '1546424935berita.jpg', '1', '2019-01-02 11:28:55', '2019-01-02 11:28:55');
-INSERT INTO `t_berita` VALUES (12, 0, 'test buruh ', '<p>test buruh 1</p>\r\n', '1546610419berita.jpg', '1', '2019-01-04 03:00:19', '2019-01-04 03:00:19');
-INSERT INTO `t_berita` VALUES (20, 0, 'test buruh ', '<p>test buruh 1</p>\r\n', '1546610419berita.jpg', '1', '2019-01-04 03:00:19', '2019-01-04 03:00:19');
-INSERT INTO `t_berita` VALUES (21, 0, 'test buruh  tmashovdfda', '<p>buruh test2</p>\r\n', '1546610442berita.jpg', '1', '2019-01-04 03:00:42', '2019-01-04 03:00:42');
-INSERT INTO `t_berita` VALUES (33, 0, 'test buruh ', '<p>test buruh 1</p>\r\n', '1546610419berita.jpg', '1', '2019-01-04 03:00:19', '2019-01-04 03:00:19');
-INSERT INTO `t_berita` VALUES (66, 0, 'test buruh ', '<p>test buruh 1</p>\r\n', '1546610419berita.jpg', '1', '2019-01-04 03:00:19', '2019-01-04 03:00:19');
 COMMIT;
 
 -- ----------------------------
@@ -277,6 +239,33 @@ INSERT INTO `t_pengaduan` VALUES (5, 'Rizal Iman Muttaqin', 'admin@gmail.com', '
 INSERT INTO `t_pengaduan` VALUES (6, 'Rizal Iman Muttaqin', 'admin@gmail.com', '081280972009', 6, 'xxxx', 'dfadfadfaf', '2019-01-04 04:08:03', '2019-01-04 04:08:03', 0);
 INSERT INTO `t_pengaduan` VALUES (7, 'Rizal Iman Muttaqin', 'admin@gmail.com', '081280972009', 6, 're', 'wkwkwk', '2019-01-06 03:16:35', '2019-01-06 03:16:35', 0);
 INSERT INTO `t_pengaduan` VALUES (8, 'test', 'im.izal03@gmail.com', '1231313213', 6, 'babi', 'ekjrkwalf', '2019-01-06 07:18:27', '2019-01-06 07:18:27', 0);
+COMMIT;
+
+-- ----------------------------
+-- Table structure for t_product
+-- ----------------------------
+DROP TABLE IF EXISTS `t_product`;
+CREATE TABLE `t_product` (
+  `id_product` int(11) NOT NULL AUTO_INCREMENT,
+  `id_kategori` int(11) DEFAULT NULL,
+  `judul` varchar(255) DEFAULT NULL,
+  `konten` text DEFAULT NULL,
+  `foto` varchar(100) DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` datetime DEFAULT NULL,
+  `harga_sewa` varchar(30) DEFAULT NULL,
+  `stock` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id_product`) USING BTREE,
+  KEY `to_category` (`id_kategori`),
+  CONSTRAINT `to_category` FOREIGN KEY (`id_kategori`) REFERENCES `m_kategori` (`id_kategori`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of t_product
+-- ----------------------------
+BEGIN;
+INSERT INTO `t_product` VALUES (71, 18, 'new product', '<p>ini lensa mahal</p>\r\n', '1584293128product.jpg', 'admin', '2020-03-15 05:25:28', '2020-03-15 05:25:28', '7000000', '50');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

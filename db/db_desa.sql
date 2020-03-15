@@ -36,10 +36,10 @@ CREATE TABLE `m_admin`  (
 INSERT INTO `m_admin` VALUES (1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', NULL, NULL);
 
 -- ----------------------------
--- Table structure for m_kategori_berita
+-- Table structure for m_kategori
 -- ----------------------------
-DROP TABLE IF EXISTS `m_kategori_berita`;
-CREATE TABLE `m_kategori_berita`  (
+DROP TABLE IF EXISTS `m_kategori`;
+CREATE TABLE `m_kategori`  (
   `id_kategori` int(11) NOT NULL AUTO_INCREMENT,
   `nama_kategori` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `date_created` datetime(0) NULL DEFAULT NULL,
@@ -48,14 +48,14 @@ CREATE TABLE `m_kategori_berita`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of m_kategori_berita
+-- Records of m_kategori
 -- ----------------------------
-INSERT INTO `m_kategori_berita` VALUES (0, 'Buruh Migran', NULL, NULL);
-INSERT INTO `m_kategori_berita` VALUES (1, 'test12', '2019-01-02 12:16:56', '2019-01-02 11:04:45');
-INSERT INTO `m_kategori_berita` VALUES (3, 'wqw', '2019-01-02 12:31:10', '2019-01-02 12:31:18');
-INSERT INTO `m_kategori_berita` VALUES (4, 're', '2019-01-02 01:17:23', '2019-01-02 01:17:23');
-INSERT INTO `m_kategori_berita` VALUES (5, 'Rizal', '2019-01-02 11:00:40', '2019-01-02 11:00:40');
-INSERT INTO `m_kategori_berita` VALUES (6, 'test pengaduan', '2019-01-06 06:52:26', '2019-01-06 06:52:26');
+INSERT INTO `m_kategori` VALUES (0, 'Buruh Migran', NULL, NULL);
+INSERT INTO `m_kategori` VALUES (1, 'test12', '2019-01-02 12:16:56', '2019-01-02 11:04:45');
+INSERT INTO `m_kategori` VALUES (3, 'wqw', '2019-01-02 12:31:10', '2019-01-02 12:31:18');
+INSERT INTO `m_kategori` VALUES (4, 're', '2019-01-02 01:17:23', '2019-01-02 01:17:23');
+INSERT INTO `m_kategori` VALUES (5, 'Rizal', '2019-01-02 11:00:40', '2019-01-02 11:00:40');
+INSERT INTO `m_kategori` VALUES (6, 'test pengaduan', '2019-01-06 06:52:26', '2019-01-06 06:52:26');
 
 -- ----------------------------
 -- Table structure for m_kategori_pengaduan

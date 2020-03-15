@@ -22,7 +22,7 @@ class Artikel extends CI_Controller {
 			<script src=".base_url('assets/admin_template/bower_components/ckeditor/ckeditor.js')."></script>
 			<script src=".base_url('assets/admin_template/bower_components/select2/dist/js/select2.full.min.js')."></script>
 			";
-		// $data['kategoris'] = $this->MyQuery->get('m_kategori_berita');
+		// $data['kategoris'] = $this->MyQuery->get('m_kategori');
 		$data['artikels'] = $this->MyQuery->get('t_artikel');
 		// echo "<pre>";
 		// print_r($data['beritas']);

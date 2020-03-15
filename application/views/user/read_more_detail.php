@@ -28,8 +28,8 @@
 					<div class="row nobottommargin clearfix">
 						
 						<div class="col-md-12">
-							<h2><?php //echo $data->judul; ?>
-								COOKE ANAMORPHIC Set 32mm, 40mm, 50mm, 75mm, 100mm (T2.3)</h2>
+							<h2><?php echo $data->judul; ?>
+								<!-- COOKE ANAMORPHIC Set 32mm, 40mm, 50mm, 75mm, 100mm (T2.3)</h2> -->
 						</div><!-- .entry-title end -->
 						<div class="col-md-6 nobottommargin">
 
@@ -104,10 +104,10 @@
 								============================================= -->
 								<div class="entry-content notopmargin" style="padding:0px 50px 0px 50px;">
 									<h3>
-										IDR 7.500.000 / DAY
+										IDR <?=number_format($data->harga_sewa,0,".",",")?>
 									</h3>
-									<?php //echo $data->konten; ?>
-									<p style="text-align: left;">
+									<?php echo $data->konten; ?>
+									<!-- <p style="text-align: left;">
 											Camera alexa mini body ( ARRI RAW  & ANAMORPHIC LICENSED )
 											ARRI Electronic viewfinder & Cable
 											ARRI FF4 follow focus set
@@ -122,7 +122,7 @@
 											Tripod set ( Hi leg/ baby leg/ Hi hat )
 											Clapper board set (small, medium, large)
 											BNC Cable 25 meters
-									</p>
+									</p> -->
 									<!-- Post Single - Content End -->
 
 									<!-- Post Single - Share

@@ -25,8 +25,8 @@
             <span>Company Profile</span>
           </a>
         </li>
-        <li class="<?php echo ($this->uri->segment(2)=='berita') ? 'active' : '';?>">
-          <a href="<?php echo base_url('admin/berita')?>">
+        <li class="<?php echo ($this->uri->segment(2)=='product') ? 'active' : '';?>">
+          <a href="<?php echo base_url('admin/product')?>">
             <i class="fa fa-files-o"></i>
             <span>Products</span>
           </a>

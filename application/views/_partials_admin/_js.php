@@ -36,6 +36,8 @@
 <script src="<?php echo base_url('assets/admin_template/dist/js/pages/dashboard.js'); ?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url('assets/admin_template/dist/js/demo.js'); ?>"></script>
+<!-- number js -->
+<script src="<?php echo base_url('assets/admin_template/bower_components/number/jquery.number.min.js'); ?>"></script>
 
 <script type="text/javascript">
 function readURL(input) {
@@ -64,6 +66,9 @@ $('#password, #confirm_password').on('keyup', function () {
 		$('#btn_pass').attr('disabled', true);
 	}
 });
+
+$('.formatNumbers').number( true, 0, ',', '.')
+
 
 </script>
   <?php echo (isset($js)) ? $js : ''; ?>

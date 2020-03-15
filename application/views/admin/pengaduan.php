@@ -59,7 +59,7 @@
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                 <h4 class="modal-title" id="myModalLabel">Edit Kategori Berita</h4>
                               </div>
-                              <form method="post" action="<?php echo base_url('admin/berita/updateKategori/'.$kategori->id_kategori_pengaduan)?>">
+                              <form method="post" action="<?php echo base_url('admin/product/updateKategori/'.$kategori->id_kategori_pengaduan)?>">
                                 <div class="modal-body">
                                   <input type="text" name="nama" class="form-control" value="<?php echo $kategori->nama_kategori ?>">
                                 </div>

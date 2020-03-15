@@ -9,7 +9,7 @@ class Index extends CI_Controller {
 		$this->load->model('MyQuery');
 		$this->load->model('ModMedia');
 		$this->load->model('ModProfile');
-		$this->load->model('ModBerita');
+		$this->load->model('ModProduct');
 		$this->load->model('ModKegiatan');
 		$this->load->model('ModArtikel');
 
@@ -21,9 +21,9 @@ class Index extends CI_Controller {
 		$data['address'] = $this->ModProfile->get(7)->row();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['beritas']= $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
-		$data['kategoris']= $this->MyQuery->get_limit('m_kategori_berita', 'id_kategori', false);
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['beritas']= $this->MyQuery->get_limit('t_product', 'id_product', 2);
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		// // $data['sliders'] = $this->MyQuery->get();
 		// echo "<pre>";
 		// print_r($data['artikels']);
@@ -36,7 +36,7 @@ class Index extends CI_Controller {
 		$data['profile'] = $this->ModProfile->get(1)->row();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 
 		$this->template->load_u('_user_template', 'profile_desa', $data);
 	}
@@ -45,7 +45,7 @@ class Index extends CI_Controller {
 		$data['profile'] = $this->ModProfile->get(2)->row();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 
 		$this->template->load_u('_user_template', 'profile_desa', $data);
 	}
@@ -56,7 +56,7 @@ class Index extends CI_Controller {
 		$data['profile'] = $this->ModProfile->get(2)->row();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 
 		$this->template->load_u('_user_template', 'letak_geografis', $data);
 	}
@@ -66,7 +66,7 @@ class Index extends CI_Controller {
 		$data['profile'] = $this->ModProfile->get(3)->row();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 
 		$this->template->load_u('_user_template', 'profile_desa', $data);
 	}
@@ -75,7 +75,7 @@ class Index extends CI_Controller {
 	{
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['profile'] = $this->ModProfile->get(4)->row();
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$this->template->load_u('_user_template', 'profile_desa', $data);
 	}
@@ -84,7 +84,7 @@ class Index extends CI_Controller {
 	{
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['profile'] = $this->ModProfile->get(5)->row();
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$this->template->load_u('_user_template', 'profile_desa', $data);
 	}
@@ -94,7 +94,7 @@ class Index extends CI_Controller {
 		$data['medias'] = $this->ModMedia->get_media(1);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		
 		$this->template->load_u('_user_template', 'anggaran_desa', $data);
 	}
@@ -105,7 +105,7 @@ class Index extends CI_Controller {
 		$data['kategoris'] = $this->ModMedia->get_kategori();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['galeris']= $this->MyQuery->get('t_galeri');
 
 		$this->template->load_u('_user_template', 'galeri_desa', $data);
@@ -119,7 +119,7 @@ class Index extends CI_Controller {
 
 	public function kegiatan()
 	{
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$jumlah_data = $this->ModKegiatan->jumlah_data();
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'kegiatan/';
@@ -161,7 +161,7 @@ class Index extends CI_Controller {
 
 	public function detail_kegiatan($id)
 	{
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$data['data']= $this->MyQuery->get_by_id('t_kegiatan', 'id_kegiatan', $id);
@@ -174,7 +174,7 @@ class Index extends CI_Controller {
 
 	public function artikel()
 	{
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$jumlah_data = $this->ModArtikel->jumlah_data();
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'artikel/';
@@ -215,7 +215,7 @@ class Index extends CI_Controller {
 
 	public function detail_artikel($id)
 	{
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$data['data']= $this->MyQuery->get_by_id('t_artikel', 'id_artikel', $id);
@@ -226,46 +226,49 @@ class Index extends CI_Controller {
 
 	}
 
-	public function berita()
+	public function product($kategori = null)
 	{
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$search = $this->input->get('search');
+		// var_dump($kategori, $search);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
 
-		if($this->input->get('search') != '' ){
-			// // print_r($data['data']);
-			$data['data']= $this->ModBerita->get_search($this->input->get('search'));
+		// if($this->input->get('search') != '' ){
+		// 	// // print_r($data['data']);
+		// 	$data['data']= $this->ModProduct->get_search($this->input->get('search'));
+		// 	// print_r($data['data']);
+		// 	// die();
+		// 	$data['id']='id_product';
+		// 	$this->template->load_u('_user_template', 'blogs', $data);
+		// }else{
+			$data['data']= $this->MyQuery->get('t_product', ["category"=> $kategori, "search" => $search]);
 			// print_r($data['data']);
-			// die();
-			$data['id']='id_berita';
-			$this->template->load_u('_user_template', 'blogs', $data);
-		}else{
-			$data['data']= $this->MyQuery->get('m_kategori_berita');
-			$this->template->load_u('_user_template', 'berita', $data);
-		}
+			$this->template->load_u('_user_template', 'product', $data);
+		// }
 	}
 
 	public function buruh()
 	{
 		$data['buruh'] = $this->ModProfile->get(8)->row();
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['data']= $this->ModBerita->get_buruh();
+		$data['data']= $this->ModProduct->get_buruh();
 		// print_r($data['data']);
 		// die();
 		$this->template->load_u('_user_template', 'buruh_migran', $data);
 	}
-	public function detail_berita($id)
+	public function detail_product($id)
 	{
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['data']= $this->MyQuery->get_by_id('t_berita', 'id_berita', $id);
+		$data['data']= $this->MyQuery->get_by_id('t_product', 'id_product', $id);
 		$data['address'] = $this->ModProfile->get(7)->row();
 
-		$data['id']='id_berita';
+		$data['id']='id_product';
 		// print_r($data['data']);
 		// die();
 		$this->template->load_u('_user_template', 'read_more_detail', $data);
@@ -273,7 +276,7 @@ class Index extends CI_Controller {
 
 	public function pengaduan()
 	{
-		$data['newss'] = $this->MyQuery->get_limit('t_berita', 'id_berita', 2);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['pengaduans']= $this->MyQuery->get('m_kategori_pengaduan');
 		$data['address'] = $this->ModProfile->get(7)->row();
 
