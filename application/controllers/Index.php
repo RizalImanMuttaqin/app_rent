@@ -12,6 +12,7 @@ class Index extends CI_Controller {
 		$this->load->model('ModProduct');
 		$this->load->model('ModKegiatan');
 		$this->load->model('ModArtikel');
+		$this->load->model('ModLogin');
 
 	}
 	public function index()
@@ -274,7 +275,7 @@ class Index extends CI_Controller {
 		$this->template->load_u('_user_template', 'read_more_detail', $data);
 	}
 
-	public function pengaduan()
+	public function sign()
 	{
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['pengaduans']= $this->MyQuery->get('m_kategori_pengaduan');
@@ -282,30 +283,78 @@ class Index extends CI_Controller {
 
 		// print_r($data['pengaduans']);
 		// die();
-		$this->template->load_u('_user_template', 'pengaduan', $data);
+		$this->template->load_u('_user_template', 'sign', $data);
 	}
-	public function addPengaduan()
+
+	public function signIn()
 	{
+		$username = $this->input->post('emaillogin');
+		$password = $this->input->post('passlogin');
+		$where = array(
+			'email' => $username,
+			'password' => md5($password)
+			);
+		$cek = $this->ModLogin->cek_login("m_users",$where)->num_rows();
+		if($cek > 0){ 
+			$data_session = array(
+				'nama' => $username,
+				'status' => "login",
+				'admin' => false
+				);
+ 
+			$this->session->set_userdata($data_session);
+ 
+			redirect(base_url("/"));
+ 
+		}else{
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<h5 style="padding:0px; margin:0px"><i class="icon fa fa-check"></i> Login Failed</h5>
+				<small>Invalid email or password</small>
+				</div>');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
+	public function register()
+	{
+		if($this->input->post('password') !== $this->input->post('cpassword')){
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<h5 style="padding:0px; margin:0px"><i class="icon fa fa-check"></i> Register Failed</h5>
+				<small>Your password not match</small>
+				</div>');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+		$check = $this->MyQuery->get_by_id('m_users', 'email', $this->input->post('email'));
+		if($check){
+			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<h5 style="padding:0px; margin:0px"><i class="icon fa fa-check"></i> Register Failed</h5>
+				<small>Your email already registered<small>
+				</div>');
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+
 		$data = array(
-			'nama' => $this->input->post('nama'),
+			'name' => $this->input->post('name'),
 			'email' => $this->input->post('email'),
-			'telepon' => $this->input->post('telepon'),
-			'id_kategori' => $this->input->post('kategori'),
-			'judul' => $this->input->post('judul'),
-			'pesan' => $this->input->post('pesan'),
+			'phone' => $this->input->post('phone'),
+			'password' => md5($this->input->post('password')),
+			'address' => $this->input->post('adress'),
 			'date_updated'	=> date('Y-m-d h:i:s'),
 			'date_created' => date('Y-m-d h:i:s'),
 		);
-		if($this->MyQuery->insert('t_pengaduan', $data)){
+		if($this->MyQuery->insert('m_users', $data)){
 			$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<h4><i class="icon fa fa-check"></i> Pengaduan berhasil dikirim</h4>
+				<h5 style="padding:0px; margin:0px"><i class="icon fa fa-check"></i> Register Success</h5>
 				</div>');
 			redirect($_SERVER['HTTP_REFERER']);
 		} else{
 			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<h4><i class="icon fa fa-check"></i> Pengaduan gagal dikirim</h4>
+				<h5 style="padding:0px; margin:0px"><i class="icon fa fa-check"></i> Register Failed</h5>
 				</div>');
 			redirect($_SERVER['HTTP_REFERER']);
 		}

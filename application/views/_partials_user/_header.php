@@ -71,7 +71,7 @@
 							</li>
 							<!-- <li class="current"><a href="<?php echo base_url('artikel');?>"><div>Article</div></a></li> -->
 							<!-- <li class="current"><a href="<?php echo base_url('peraturan-desa');?>"><div>Term and Condition</div></a></li> -->
-							<li class="current"><a href="<?php echo base_url('pengaduan');?>"><div>Register/Login</div></a></li>
+							<li class="current"><a href="<?php echo base_url('sign');?>"><div>Register/Login</div></a></li>
 						</ul>
 
 						<!-- Top Search

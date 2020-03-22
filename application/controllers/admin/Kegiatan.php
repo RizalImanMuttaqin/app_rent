@@ -7,7 +7,7 @@ class Kegiatan extends CI_Controller {
 		parent::__construct();
 		$this->load->model('MyQuery');
 		// $this->load->model('ModBerita');
-		if($this->session->userdata('status') != "login"){
+		if($this->session->userdata('status') != "login" && $this->session->userdata('admin') == true){
 			redirect(base_url("login"));
 		}
 	}

@@ -28,139 +28,61 @@
 					<div class="row nobottommargin clearfix">
 						
 						<div class="col-md-12">
-							<h2><?php echo $data->judul; ?>
-								<!-- COOKE ANAMORPHIC Set 32mm, 40mm, 50mm, 75mm, 100mm (T2.3)</h2> -->
-						</div><!-- .entry-title end -->
+							<h2><?php echo $data->judul; ?></h2>
+						</div>
+						<!-- .entry-title end -->
 						<div class="col-md-6 nobottommargin">
 
 							<!-- Single Post
 							============================================= -->
-							<div class="entry clearfix">
-
-								<!-- Entry Title
-								============================================= -->
-
-								<!-- Entry Meta
-								============================================= -->
-								
-								<!-- Entry Image
-								============================================= -->
+							<div class="entry">
 								<div class="entry-image">
 									<a href="<?php echo base_url('assets/upload/'.$data->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/'.$data->foto); ?>" alt="Standard Post with Image"></a>
 								</div><!-- .entry-image end -->
 
-								<!-- Entry Content
-								============================================= -->
-								<div class="entry-content notopmargin">
-
-									<?php //echo $data->konten; ?>
-									<!-- Post Single - Content End -->
-
-									<!-- Post Single - Share
-									============================================= -->
-									<?php //$this->load->view('_partials_user/_share_konten'); ?><!-- Post Single - Share End -->
-
-								</div>
 							</div><!-- .entry end -->
 
 							<!-- Post Navigation
 							============================================= -->
-							<div class="post-navigation clearfix">
-
-								<!-- <div class="col_half nobottommargin">
-									<a href="<?php echo (int)$data->$id-1 ?>">&lArr; Previous</a>
-								</div>
-
-								<div class="col_half col_last tright nobottommargin">
-									<a href="<?php echo (int)$data->$id+1 ?>"><b></b> Next &rArr;</a>
-								</div> -->
-
-							</div><!-- .post-navigation end -->
-
 						</div>
 						<div class="col-md-6 nobottommargin">
 
 							<!-- Single Post
 							============================================= -->
 							<div class="entry">
-
-								<!-- Entry Title
-								============================================= -->
-								<div class="entry-title">
-									<h2><?php //echo $data->judul; ?></h2>
-								</div><!-- .entry-title end -->
-
-								<!-- Entry Meta
-								============================================= -->
-
-								<!-- Entry Image
-								============================================= -->
-								<!-- <div class="entry-image">
-									<a href="<?php echo base_url('assets/upload/'.$data->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/'.$data->foto); ?>" alt="Standard Post with Image"></a>
+								<!-- <div class="col-md-12">
+									<h2><?php echo $data->judul; ?>
 								</div> -->
-								<!-- .entry-image end -->
+								<!-- .entry-title end -->
 
 								<!-- Entry Content
 								============================================= -->
-								<div class="entry-content notopmargin" style="padding:0px 50px 0px 50px;">
-									<h3>
-										IDR <?=number_format($data->harga_sewa,0,".",",")?>
+								<div class="entry-content notopmargin">
+									<h3 style="background-color: rgba(0,0,0,.02); padding: 12px;">
+										IDR <?=number_format($data->harga_sewa,0,",",".")?> / Day
 									</h3>
-									<?php echo $data->konten; ?>
-									<!-- <p style="text-align: left;">
-											Camera alexa mini body ( ARRI RAW  & ANAMORPHIC LICENSED )
-											ARRI Electronic viewfinder & Cable
-											ARRI FF4 follow focus set
-											Bridge plate, quick release, sliding plate
-											3x Lexar 256 GB C fast
-											1x CODEC card reader
-											5x FX lion 14,7 Volt V Mount Battery Pack with  4 ways Charger 
-											Shoulder pad
-											TV logic 5.8" or 5.6" multiformat onboard monitor & noga arm
-											TV logic 17" SDI monitor multiformat 
-											2575D O connor Fluid head/ Sachtler 9+9 Fluid head
-											Tripod set ( Hi leg/ baby leg/ Hi hat )
-											Clapper board set (small, medium, large)
-											BNC Cable 25 meters
-									</p> -->
-									<!-- Post Single - Content End -->
 
-									<!-- Post Single - Share
-									============================================= -->
-
+									<div class="col-md-12">
+										<button class="btn btn-secondary">Add to Chart</button>
+										<button class="btn btn-info">Rent Product</button>
+									</div>
+									
 								</div>
 							</div><!-- .entry end -->
-
-							<!-- Post Navigation
-							============================================= -->
-							<div class="post-navigation clearfix">
-
-								<!-- <div class="col_half nobottommargin">
-									<a href="<?php echo (int)$data->$id-1 ?>">&lArr; Previous</a>
-								</div>
-
-								<div class="col_half col_last tright nobottommargin">
-									<a href="<?php echo (int)$data->$id+1 ?>"><b></b> Next &rArr;</a>
-								</div> -->
-
-							</div><!-- .post-navigation end -->
-
 						</div>
 						<div class="col-md-12">
-								ORDER<!-- Post Single - Share End -->
+							<span class="col-md-12" > <h4 style="margin-bottom: 0px; padding:7px; background-color:rgba(0,0,0,.02);">Deskripsi Product</h4></span>
+								<div style="padding: 10px;">
+									<?php echo $data->konten; ?>
+								</div>
 							</div>
 						<div class="col-md-12">
 							<?php $this->load->view('_partials_user/_share_konten'); ?><!-- Post Single - Share End -->
 						</div>
 
 					</div><!-- .postcontent end -->
-
-				
-					
-
 				</div>
 
 			</div>
 
 		</section><!-- #content end -->
-

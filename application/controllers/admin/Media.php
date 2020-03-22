@@ -8,7 +8,7 @@ class Media extends CI_Controller {
 		$this->load->model('MyQuery');
 		$this->load->model('ModMedia');
 		// $this->load->helper(array('url','download'));
-		if($this->session->userdata('status') != "login"){
+		if($this->session->userdata('status') != "login" && $this->session->userdata('admin') == true){
 			redirect(base_url("login"));
 		}
 	}
