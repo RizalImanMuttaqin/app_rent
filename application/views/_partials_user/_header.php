@@ -18,7 +18,8 @@
 
 	<link rel="stylesheet" href="<?php echo base_url('assets/user_template/css/responsive.css'); ?>" type="text/css" />
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no" name="viewport" />
-
+	<link rel="stylesheet" href="<?php echo base_url('assets/admin_template/bower_components/bootstrap-daterangepicker/daterangepicker.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('assets/user_template/js/swal/swal.min.css'); ?>">
 	<link rel="icon" type="image/png" href="images/logo.png" sizes="32x32" />
 
 	<!-- Document Title
@@ -71,7 +72,20 @@
 							</li>
 							<!-- <li class="current"><a href="<?php echo base_url('artikel');?>"><div>Article</div></a></li> -->
 							<!-- <li class="current"><a href="<?php echo base_url('peraturan-desa');?>"><div>Term and Condition</div></a></li> -->
-							<li class="current"><a href="<?php echo base_url('sign');?>"><div>Register/Login</div></a></li>
+							<li class="current"><a href="<?php echo base_url('index/sign');?>"><div>Register/Login</div></a></li>
+							<li class="current"><a href="#"><div><i class="icon-user"></i> <i class="icon-angle-down"></i></div></a>
+								<ul>
+									<li><a href="<?php echo base_url('index/cart');?>"><div><i class="icon-shopping-cart"></i>Cart</div></a></li>
+									<li><a href="<?php echo base_url('index/order');?>"><div><i class="icon-clipboard"></i>Order</div></a></li>
+									<li><a href="<?php echo base_url('index/signOut');?>"><div><i class="icon-signout"></i>Logout</div></a></li>
+									<!-- <li><a href="<?php echo base_url('galeri-desa');?>"><div>Galeri Desa</div></a></li>
+									<li><a href="<?php echo base_url('peraturan-desa');?>"><div>Peraturan Desa</div></a></li>
+									<li><a href="<?php echo base_url('anggaran-desa');?>"><div>Anggaran Desa</div></a></li>
+									<li><a href="<?php echo base_url('berita');?>"><div>Berita Desa</div></a></li>
+									<li><a href="<?php echo base_url('kegiatan');?>"><div>Kegiatan Desa</div></a></li>
+									<li><a href="<?php echo base_url('buruh-migran');?>"><div>Buruh Migran</div></a></li> -->
+								</ul>
+							</li>
 						</ul>
 
 						<!-- Top Search

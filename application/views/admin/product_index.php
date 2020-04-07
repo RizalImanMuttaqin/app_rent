@@ -46,11 +46,15 @@
                         <?php endforeach; ?>
                       </select>
                     </div>
-                    <div class="col-md-6" style="padding-top: 10px;">
-                      <label>Rent Price / Day (IDR) : </label>
+                    <div class="col-md-5" style="padding-top: 10px;">
+                      <label>Rental Price / Day (IDR) : </label>
                       <input type="text" name="harga_sewa" class="form-control formatNumbers">
                     </div>
-                    <div class="col-md-6" style="padding-top: 10px;">
+                    <div class="col-md-5" style="padding-top: 10px;">
+                      <label>Crew Fee / Day (IDR) : </label>
+                      <input type="text" name="harga_sewa_crew" class="form-control formatNumbers">
+                    </div>
+                    <div class="col-md-2" style="padding-top: 10px;">
                       <label>Product Stock : </label>
                       <input type="text" name="stock" class="form-control formatNumbers">
                     </div>
@@ -173,7 +177,8 @@
                     <th>Product Title</th>
                     <th>Category</th>
                     <th style="width: 40%">Content</th>
-                    <th>Price</th>
+                    <th>Rental Price</th>
+                    <th>Crew Fee</th>
                     <th>Stock</th>
                     <th>Date Post</th>
                     <th>Action</th>
@@ -187,7 +192,8 @@
                       <td id="t_judul"><?php echo $berita->judul ?></td>
                       <td id="t_nama_kategori"><?php echo $berita->nama_kategori ?></td>
                       <td id="t_konten"><?php echo htmlspecialchars($berita->konten) ?></td>
-                      <td><?=number_format($berita->harga_sewa, 0,",",".")?></td>
+                      <td>Rp. <?=number_format($berita->harga_sewa, 0,",",".")?></td>
+                      <td>Rp. <?=number_format($berita->harga_sewa_crew, 0,",",".")?></td>
                       <td><?=number_format($berita->stock, 0,",",".")?></td>
                       <td><?php echo date('d-m-Y h:i:s', strtotime($berita->date_created)); ?></td>
                       <td><a href="<?php echo base_url('admin/product/deleteProduct/'.$berita->id_product);?>" title="Hapus" class="btn btn-danger confirmation"><span class="fa fa-trash"></span></a>
@@ -251,11 +257,15 @@
                               <?php endforeach; ?>
                             </select>
                           </div>
-                          <div class="col-md-6" style="padding-top: 10px;">
-                            <label>Rent Price / Day (IDR) : </label>
+                          <div class="col-md-5" style="padding-top: 10px;">
+                            <label>Rental Price / Day (IDR) : </label>
                             <input type="text" name="harga_sewa" value='<?=number_format($berita->harga_sewa, 0,",",".")?>' class="form-control formatNumbers">
                           </div>
-                          <div class="col-md-6" style="padding-top: 10px;">
+                          <div class="col-md-5" style="padding-top: 10px;">
+                            <label>Crew Fee / Day (IDR) : </label>
+                            <input type="text" name="harga_sewa_crew" value='<?=number_format($berita->harga_sewa, 0,",",".")?>' class="form-control formatNumbers">
+                          </div>
+                          <div class="col-md-2" style="padding-top: 10px;">
                             <label>Product Stock : </label>
                             <input type="text" value='<?=number_format($berita->stock, 0,",",".")?>' name="stock" class="form-control formatNumbers">
                           </div>

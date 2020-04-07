@@ -10,7 +10,7 @@ class Login extends CI_Controller{
 	}
  
 	function index(){
-		if($this->session->userdata('status') == "login"){
+		if($this->session->userdata('status') == "login" && $this->session->userdata('admin') == true){
 			redirect(base_url("admin/profile"));
 		}
 		$this->load->view('admin/login');

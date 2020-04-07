@@ -250,17 +250,17 @@ class Index extends CI_Controller {
 		// }
 	}
 
-	public function buruh()
-	{
-		$data['buruh'] = $this->ModProfile->get(8)->row();
-		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
-		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
-		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['data']= $this->ModProduct->get_buruh();
-		// print_r($data['data']);
-		// die();
-		$this->template->load_u('_user_template', 'buruh_migran', $data);
-	}
+	// public function buruh()
+	// {
+	// 	$data['buruh'] = $this->ModProfile->get(8)->row();
+	// 	$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
+	// 	$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
+	// 	$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
+	// 	$data['data']= $this->ModProduct->get_buruh();
+	// 	// print_r($data['data']);
+	// 	// die();
+	// 	$this->template->load_u('_user_template', 'buruh_migran', $data);
+	// }
 	public function detail_product($id)
 	{
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
@@ -294,17 +294,21 @@ class Index extends CI_Controller {
 			'email' => $username,
 			'password' => md5($password)
 			);
-		$cek = $this->ModLogin->cek_login("m_users",$where)->num_rows();
-		if($cek > 0){ 
+		$cek = $this->ModLogin->cek_login("m_users",$where)->row();
+		// print_r($cek);
+		if($cek){ 
+			// print_r(count($cek->id);
+			// die();
 			$data_session = array(
 				'nama' => $username,
 				'status' => "login",
-				'admin' => false
+				'admin' => false,
+				'id_user' => $cek->id
 				);
  
 			$this->session->set_userdata($data_session);
  
-			redirect(base_url("/"));
+			return redirect(base_url("/"));
  
 		}else{
 			$this->session->set_flashdata('info', '<div class="alert alert-danger alert-dismissible">
@@ -312,8 +316,13 @@ class Index extends CI_Controller {
 				<h5 style="padding:0px; margin:0px"><i class="icon fa fa-check"></i> Login Failed</h5>
 				<small>Invalid email or password</small>
 				</div>');
-			redirect($_SERVER['HTTP_REFERER']);
+			return redirect($_SERVER['HTTP_REFERER']);
 		}
+	}
+
+	public function signOut(){
+		$this->session->sess_destroy();
+		redirect(base_url('/'));
 	}
 
 	public function register()
@@ -359,5 +368,72 @@ class Index extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER']);
 		}
 		
+	}
+
+	public function cart()
+	{
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
+		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['cart'] = $this->MyQuery->getCart();
+		$data['sub_total'] = array_sum(array_column($data['cart'], 'total_price'));
+		// print_r($xarr_new);
+		// die();
+		$this->template->load_u('_user_template', 'cart', $data);
+	}
+
+	public function add_cart()
+	{
+		$post = $this->input->post();
+
+		// $tmp = array();
+		foreach ($post as $key => $value) {
+			foreach ($value as $nkey => $nvalue) {
+				$tmp[$nkey][$key] = $nvalue;
+				// $ndata[$nkey]= array(
+				// 	"test" => $key[$nk]
+				// );
+			}
+		}
+		foreach ($tmp as $key => $value) {
+			$ndata[$key] = array(
+				"id_product" 		=> $value["id_product"],
+				"id_user"	 		=> $this->session->userdata('id_user'),
+				"qty"				=> $value["qty_sewa"],
+				"order_start_date"	=> date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $value["tgl_sewa"])[0]))),
+				"order_end_date"	=> date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $value["tgl_sewa"])[1]))),
+				"date_created"		=> date('Y-m-d h:i:s'),
+				"date_updated"		=> date('Y-m-d h:i:s'),
+				"status"			=> "1",
+				"total_price"		=> $value["total_price"]
+			);
+			// echo $value["id_product"]."<br>";
+		}
+		// print_r($ndata);
+		// die();
+		$this->MyQuery->insertBatch('t_order_cart', $ndata);
+		$this->session->set_flashdata('info_cart', true);
+		return redirect($_SERVER['HTTP_REFERER']);
+		
+	}
+
+	public function delete_cart($id)
+	{
+		$this->MyQuery->deleteCart($id);
+		$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<h4><i class="icon fa fa-check"></i> Data berhasil dihapus</h4>
+				</div>');
+			redirect($_SERVER['HTTP_REFERER']);
+	}
+
+
+	public function order()
+	{
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
+		$data['address'] = $this->ModProfile->get(7)->row();
+
+		// print_r($data['data']);
+		// die();
+		$this->template->load_u('_user_template', 'orders', $data);
 	}
 }

@@ -72,6 +72,85 @@
 	<!-- Footer Scripts
 	============================================= -->
 	<script src="<?php echo base_url('assets/user_template/js/functions.js')?>"></script>
+	<script src="<?php echo base_url('assets/user_template/js/swal/swal.js')?>"></script>
 
+	<script src="<?php echo base_url('assets/admin_template/bower_components/moment/min/moment.min.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/admin_template/bower_components/bootstrap-daterangepicker/daterangepicker.js'); ?>"></script>
+	<script src="<?php echo base_url('assets/admin_template/bower_components/number/jquery.number.min.js'); ?>"></script>
+	
+	<script>
+    $('.daterange').daterangepicker({
+		locale: {
+     		format: 'D/MM/YYYY'
+    	}
+	})
+
+	$('.formatNumbers').number( true, 0, ',', '.');
+	$('b.formatNumbers').number( true, 0, ',', '.');
+	(function(){
+		const show = "<?php echo $this->session->flashdata('info_cart');  ?>";
+		// console.log(show, "lol")
+		if(show){
+
+			Swal.fire({
+				title: '<strong>Succes</strong>',
+				icon: 'info',
+				html:
+				'Your Product Has Added to Cart',
+				showCloseButton: true,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+				'<i class="icon-shopping-cart"></i> Check Your Cart',
+				cancelButtonText:
+				'<i class=""></i> Continue',
+			}).then((result) => {
+				if (result.value) {
+					return window.location="<?=base_url('index/cart')?>";
+				}
+			})
+		}
+	})();
+
+	function countPrice() {
+		const harga = $('#harga_sewa').text().split('.').join('');
+		const crew = $('#crew_sewa').text().split('.').join('');
+		const qty = $('#qty_sewa').val();
+		let date = $('#tgl_sewa').val().split(" - ");
+		let total_days = moment.duration(moment(date[1], "DD-MM-YYYY").diff(moment(date[0], "DD-MM-YYYY"))).asDays()+1;
+		let sum_crew = (Number(crew) * qty) * total_days;
+		let sum_prod = (Number(harga) * qty) * (total_days>=7?total_days-3:total_days);
+		$('#total_price').text(sum_prod+sum_crew).number( true, 0, ',', '.')
+		$('#total_price_h').val(sum_prod+sum_crew)
+		// console.log(sum_prod);
+		return false;
+	}
+
+	$("#top_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#top_selectall").prop("checked")) )
+	$("#bot_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#bot_selectall").prop("checked")) )
+
+
+	$("#offer").click(() => {
+		Swal.fire({
+				title: '<strong>Succes</strong>',
+				icon: 'info',
+				html:
+				'Your Offer Already Send to Admin <br> Please Send Message to Admin for Fast Response',
+				showCloseButton: true,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+				'<i class=""></i> Send Message',
+				cancelButtonText:
+				'<i class=""></i> No thanks',
+			}).then((result) => {
+				if (result.value) {
+					let msg = "Saya ingin mengajukan penawaran untuk id Order 3333".split(" ").join("%20")
+					console.log(msg)
+					return window.open("https://api.whatsapp.com/send?phone=6281280972009&text="+msg, "_blank");
+				}
+		})
+	})
+	</script>
 </body>
 </html>

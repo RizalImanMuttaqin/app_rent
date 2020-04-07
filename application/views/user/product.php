@@ -57,12 +57,12 @@
 													foreach ($data as $item) :
 												?>
 		
-													<div class="col_one_third col_last" >
+													<div class="col_one_third col_last" style="padding: 20px;">
 														<div class="entry-title" align="center">
 															<h2  style="font-size: 15px"><a href="<?php echo base_url('index/detail_product/'.$item->id_product);?>"> <?php echo $item->judul; ?></a></h2>
 														</div>
 														<div class="entry-image" style="margin-bottom:10px;">
-															<a href="<?php echo base_url('assets/upload/'.$item->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/'. $item->foto); ?>" alt="Standard Post with Image"></a>
+															<a href="<?php echo base_url('assets/upload/'.$item->foto); ?>" data-lightbox="image"><img class="image_fade" style="width:350px;height:350px;object-fit:scale-down;" src="<?php echo base_url('assets/upload/'. $item->foto); ?>" alt="Standard Post with Image"></a>
 														</div>
 														<div class="entry-title" style="padding-left: 20px; padding-right: 20px;">
 															<a  href="<?php echo base_url('index/detail_product/'.$item->id_product); ?>" class="btn btn-secondary form-control">RENT PRODUCT</a>

@@ -79,5 +79,25 @@ class MyQuery extends CI_Model {
                 return $this->db->get('t_pengaduan')->num_rows();
         }
 
+        public function insertBatch($table, $data){
+                $this->db->insert_batch($table, $data); 
+        }
 
+        public function getCart(){
+                $id_user = $this->session->userdata('id_user');
+                $this->db->where('status', '1');
+                $this->db->where('id_user', $id_user);
+                $this->db->order_by("t_order_cart.date_created", "desc");
+                $this->db->join('t_product', 't_product.id_product = t_order_cart.id_product');
+                $query = $this->db->get("t_order_cart");
+                return $query->result();
+        }
+
+        public function deleteCart($id){
+                $id_user = $this->session->userdata('id_user');
+                $this->db->where('status', '1');
+                $this->db->where('id_user', $id_user);
+                $this->db->where('id_cart', $id);
+                $this->db->delete("t_order_cart");
+        }
 }

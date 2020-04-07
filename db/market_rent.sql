@@ -11,7 +11,7 @@
  Target Server Version : 100322
  File Encoding         : 65001
 
- Date: 16/03/2020 00:43:26
+ Date: 22/03/2020 22:14:13
 */
 
 SET NAMES utf8mb4;
@@ -48,13 +48,14 @@ CREATE TABLE `m_kategori` (
   `date_updated` datetime DEFAULT NULL,
   `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_kategori`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of m_kategori
 -- ----------------------------
 BEGIN;
 INSERT INTO `m_kategori` VALUES (18, 'CAMERA', '2020-03-15 04:22:55', '2020-03-15 05:42:16', '1584294136kategori.jpg');
+INSERT INTO `m_kategori` VALUES (19, 'Lensa', '2020-03-15 05:58:23', '2020-03-15 05:58:23', '1584295103kategori.jpg');
 COMMIT;
 
 -- ----------------------------
@@ -95,11 +96,33 @@ CREATE TABLE `m_profile_desa` (
 -- Records of m_profile_desa
 -- ----------------------------
 BEGIN;
-INSERT INTO `m_profile_desa` VALUES (1, 'Informasi Umum', '<p>wwwwwsssss1111</p>\r\n', '1gambar.jpg', '1', '2019-01-02 01:51:11', '2019-01-02 09:21:42');
-INSERT INTO `m_profile_desa` VALUES (2, 'Sejarah Desa', '<p>samapahhahahah</p>\r\n', '2gambar.jpg', '1', '2019-01-02 01:51:11', '2020-03-05 04:08:11');
 INSERT INTO `m_profile_desa` VALUES (6, 'A BIT ABOUT US', '<p><strong>What started out as just an idea has developed into one of the best rental shops in the area. We&rsquo;re proud of the business that we&rsquo;ve created, and relish the opportunity to continue offering our rentals and services to customers in the future. Give us a call to see if we might just have what you&rsquo;re looking for.</strong></p>\r\n', '6gambar.jpg', NULL, NULL, '2020-03-05 04:09:22');
 INSERT INTO `m_profile_desa` VALUES (7, 'Letak Geografis', '<p>Jalan DD no 25</p>\r\n\r\n<p>RT.12/RW.1</p>\r\n\r\n<p>Menteng Dalam</p>\r\n\r\n<p>Tebet</p>\r\n\r\n<p>Kota Jakarta Selatan</p>\r\n\r\n<p>DKI Jakarta 12870</p>\r\n\r\n<p>Indonesia</p>\r\n', '7gambar.jpg', NULL, NULL, '2020-03-05 03:56:33');
-INSERT INTO `m_profile_desa` VALUES (8, 'Buruh Migran', '<p>wkwkwkwkland</p>\r\n', '7gambar.jpg', NULL, NULL, '2019-01-06 03:35:03');
+COMMIT;
+
+-- ----------------------------
+-- Table structure for m_users
+-- ----------------------------
+DROP TABLE IF EXISTS `m_users`;
+CREATE TABLE `m_users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `phone` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `date_updated` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Records of m_users
+-- ----------------------------
+BEGIN;
+INSERT INTO `m_users` VALUES (1, 'rizal', 'e10adc3949ba59abbe56e057f20f883e', '12345678', 'im.izal@gmail.com', NULL, '2020-03-21 08:30:35', '2020-03-21 08:30:35');
+INSERT INTO `m_users` VALUES (4, 'rizal', 'e10adc3949ba59abbe56e057f20f883e', '12345678', 'im.izal@gmaill.com', NULL, '2020-03-21 08:40:20', '2020-03-21 08:40:20');
 COMMIT;
 
 -- ----------------------------

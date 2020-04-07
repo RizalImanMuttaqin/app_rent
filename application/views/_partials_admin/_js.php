@@ -70,5 +70,6 @@ $('#password, #confirm_password').on('keyup', function () {
 $('.formatNumbers').number( true, 0, ',', '.')
 
 
+
 </script>
   <?php echo (isset($js)) ? $js : ''; ?>
