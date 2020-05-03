@@ -61,13 +61,10 @@
 							<!-- <li class="current"><a href="<?php echo base_url(); ?>"><div>Profile</div></a></li> -->
 							<li class="current"><a href="#"><div>Products <i class="icon-angle-down"></i></div></a>
 								<ul>
-									<li><a href="<? //php echo base_url('berita');?>"><div>Show All Product</div></a></li>
-									<!-- <li><a href="<?php echo base_url('galeri-desa');?>"><div>Galeri Desa</div></a></li>
-									<li><a href="<?php echo base_url('peraturan-desa');?>"><div>Peraturan Desa</div></a></li>
-									<li><a href="<?php echo base_url('anggaran-desa');?>"><div>Anggaran Desa</div></a></li>
-									<li><a href="<?php echo base_url('berita');?>"><div>Berita Desa</div></a></li>
-									<li><a href="<?php echo base_url('kegiatan');?>"><div>Kegiatan Desa</div></a></li>
-									<li><a href="<?php echo base_url('buruh-migran');?>"><div>Buruh Migran</div></a></li> -->
+									<li><a href="<?php echo base_url('index/product');?>"><div>Show All Product</div></a></li>
+									<?php foreach ($kategoris as $kategori) : ?>
+										<li><a href="<?php echo base_url('index/product/'. $kategori->id_kategori);?>"><div><?=$kategori->nama_kategori?></div></a></li>
+									<?php endforeach; ?>
 								</ul>
 							</li>
 							<!-- <li class="current"><a href="<?php echo base_url('artikel');?>"><div>Article</div></a></li> -->

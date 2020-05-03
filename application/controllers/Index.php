@@ -23,7 +23,7 @@ class Index extends CI_Controller {
 		$data['address'] = $this->ModProfile->get(7)->row();
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
-		$data['beritas']= $this->MyQuery->get_limit('t_product', 'id_product', 2);
+		// $data['beritas']= $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		// // $data['sliders'] = $this->MyQuery->get();
@@ -230,6 +230,7 @@ class Index extends CI_Controller {
 
 	public function product($kategori = null)
 	{
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$search = $this->input->get('search');
 		// var_dump($kategori, $search);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
@@ -264,6 +265,7 @@ class Index extends CI_Controller {
 	// }
 	public function detail_product($id)
 	{
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
@@ -278,6 +280,7 @@ class Index extends CI_Controller {
 
 	public function sign()
 	{
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['pengaduans']= $this->MyQuery->get('m_kategori_pengaduan');
 		$data['address'] = $this->ModProfile->get(7)->row();
@@ -374,6 +377,7 @@ class Index extends CI_Controller {
 	public function cart()
 	{
 		checkUserLogin();
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
 		$data['cart'] = $this->MyQuery->getCart();
@@ -435,6 +439,7 @@ class Index extends CI_Controller {
 	public function order()
 	{
 		checkUserLogin();
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
 		$data['orders'] = $this->MyQuery->getOrder(false);
