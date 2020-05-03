@@ -7,7 +7,7 @@ class Product extends CI_Controller {
 		parent::__construct();
 		$this->load->model('MyQuery');
 		$this->load->model('ModProduct');
-		if($this->session->userdata('status') != "login" && $this->session->userdata('admin') == true){
+		if($this->session->userdata('status') != "login_admin"){
 			redirect(base_url("login"));
 		}
 	}

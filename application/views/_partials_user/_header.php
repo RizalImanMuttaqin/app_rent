@@ -72,8 +72,13 @@
 							</li>
 							<!-- <li class="current"><a href="<?php echo base_url('artikel');?>"><div>Article</div></a></li> -->
 							<!-- <li class="current"><a href="<?php echo base_url('peraturan-desa');?>"><div>Term and Condition</div></a></li> -->
+							<?php 
+							// print_r($this->session->userdata("admin")); 
+							if(!$this->session->userdata("status")) : 
+							?>
 							<li class="current"><a href="<?php echo base_url('index/sign');?>"><div>Register/Login</div></a></li>
-							<li class="current"><a href="#"><div><i class="icon-user"></i> <i class="icon-angle-down"></i></div></a>
+							<?php else : ?>
+							<li class="current"><a href="#"><div><i class="icon-user"></i><?=substr($this->session->userdata('name'), 0, 7)?><i class="icon-angle-down"></i></div></a>
 								<ul>
 									<li><a href="<?php echo base_url('index/cart');?>"><div><i class="icon-shopping-cart"></i>Cart</div></a></li>
 									<li><a href="<?php echo base_url('index/order');?>"><div><i class="icon-clipboard"></i>Order</div></a></li>
@@ -86,6 +91,7 @@
 									<li><a href="<?php echo base_url('buruh-migran');?>"><div>Buruh Migran</div></a></li> -->
 								</ul>
 							</li>
+							<?php endif; ?>
 						</ul>
 
 						<!-- Top Search
