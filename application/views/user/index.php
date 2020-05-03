@@ -108,33 +108,6 @@
 									<h3>WE OFFERED</h3>
 								</div>
 
-								<!-- <div id="posts">
-
-									<div class="entry clearfix">
-										<?php foreach ($beritas as $berita) : ?>
-
-											<div class="col_half col_last" style="padding: 10px">
-												<div class="entry-image">
-													<a href="<?php echo base_url('assets/upload/'.$berita->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/'.$berita->foto); ?>" alt="Standard Post with Image"></a>
-												</div>
-												<div class="entry-title">
-													<h2><a href="<?php echo base_url('index/detail_berita/'.$berita->id_berita);?>"><?php echo $berita->judul; ?></a></h2>
-												</div>
-												<ul class="entry-meta clearfix">
-													<li><i class="icon-calendar3"></i> <?php echo date('d-m-Y', strtotime($berita->date_created)); ?></li>
-													<li><i class="icon-folder-open"></i> <a href="#"><?php echo  $berita->nama_kategori; ?></a></li>
-												</ul>
-												<div class="entry-content">
-													<?php echo $berita->konten; ?>
-													<a href="<?php echo base_url('index/detail_berita/'.$berita->id_berita);?>" class="more-link">Baca selengkapnya >></a>
-												</div>
-											</div>
-
-										<?php endforeach; ?>
-									</div>
-
-								</div> -->
-
 								<div id="posts">
 
 									<div class="entry clearfix row">
