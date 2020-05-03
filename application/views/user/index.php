@@ -142,7 +142,7 @@
 
 											<div class="col-md-4 col-xs-4" style="padding: 30px">
 												<div class="entry-image">
-													<a href="<?php echo base_url('index/product/'. $kategori->id_kategori); ?>" ><img class="image_fade" src="<?php echo base_url('assets/upload/'. $kategori->image); ?>" alt="Standard Post with Image"></a>
+													<a href="<?php echo base_url('index/product/'. $kategori->id_kategori); ?>" ><img class="image_fade" src="<?php echo base_url('assets/upload/'. $kategori->image); ?>" style="width:350px;height:350px;object-fit:scale-down;" alt="Standard Post with Image"></a>
 												</div>
 												<div class="entry-title" align="center">
 													<h2  style="font-size: 15px"><a href="<?php echo base_url('index/product/'. $kategori->id_kategori); //echo base_url('index/detail_berita/'.$kategori->id_kategori);?>"><?php echo $kategori->nama_kategori; ?></a></h2>

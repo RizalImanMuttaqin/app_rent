@@ -88,9 +88,19 @@
 	$('.formatNumbers').number( true, 0, ',', '.');
 	$('b.formatNumbers').number( true, 0, ',', '.');
 	(function(){
-		const show = "<?php echo $this->session->flashdata('info_cart');  ?>";
+		const cart = "<?php echo $this->session->flashdata('info_cart');  ?>";
+		const order = "<?php echo $this->session->flashdata('info_order');  ?>";
+		const err = "<?php echo $this->session->flashdata('error');  ?>";
 		// console.log(show, "lol")
-		if(show){
+		if(err){
+			Swal.fire({
+				icon: 'error',
+				title: 'Oops...',
+				text: 'Something went wrong!',
+				footer: '<a href="https://api.whatsapp.com/send?phone=6281280972009" target="_blank">Please contact administrator for this issue</a>'
+			})
+		}
+		else if(cart){
 
 			Swal.fire({
 				title: '<strong>Succes</strong>',
@@ -107,6 +117,24 @@
 			}).then((result) => {
 				if (result.value) {
 					return window.location="<?=base_url('index/cart')?>";
+				}
+			})
+		}else if(order){
+			Swal.fire({
+				title: '<strong>Succes</strong>',
+				icon: 'info',
+				html:
+					'Please Complete Your Payment Process',
+				showCloseButton: true,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+					'<i class="icon-clipboard"></i> Check Your Order',
+				cancelButtonText:
+					'<i class=""></i> Continue',
+			}).then((result) => {
+				if (result.value) {
+					return window.location = "<?=base_url('index/order')?>";
 				}
 			})
 		}

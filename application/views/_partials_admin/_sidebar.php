@@ -49,6 +49,15 @@
             <span>Media</span>
           </a>
         </li>
+
+
+        <li class="<?php echo ($this->uri->segment(2)=='transaction') ? 'active' : '';?>">
+          <a href="<?php echo base_url('admin/transaction')?>">
+            <i class="fa fa-files-o"></i>
+            <span>Transaction</span>
+          </a>
+        </li>
+        
         <!-- <li class="<?php echo ($this->uri->segment(2)=='pengaduan') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/pengaduan')?>">
             <i class="fa fa-files-o"></i>

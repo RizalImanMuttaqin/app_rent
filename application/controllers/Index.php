@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+ob_start();
 class Index extends CI_Controller {
 
 	function __construct() {
 		parent::__construct();
 		// $this->load->library('pagination');
+		$this->load->helper('custom_helper');
 		$this->load->model('MyQuery');
 		$this->load->model('ModMedia');
 		$this->load->model('ModProfile');
@@ -300,9 +301,9 @@ class Index extends CI_Controller {
 			// print_r(count($cek->id);
 			// die();
 			$data_session = array(
-				'nama' => $username,
-				'status' => "login",
-				'admin' => false,
+				'email' => $username,
+				'name' => $cek->name,
+				'status' => "login_user",
 				'id_user' => $cek->id
 				);
  
@@ -372,6 +373,7 @@ class Index extends CI_Controller {
 
 	public function cart()
 	{
+		checkUserLogin();
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
 		$data['cart'] = $this->MyQuery->getCart();
@@ -383,6 +385,7 @@ class Index extends CI_Controller {
 
 	public function add_cart()
 	{
+		checkUserLogin();
 		$post = $this->input->post();
 
 		// $tmp = array();
@@ -416,8 +419,10 @@ class Index extends CI_Controller {
 		
 	}
 
+
 	public function delete_cart($id)
 	{
+		checkUserLogin();
 		$this->MyQuery->deleteCart($id);
 		$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -429,11 +434,71 @@ class Index extends CI_Controller {
 
 	public function order()
 	{
+		checkUserLogin();
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
-
-		// print_r($data['data']);
+		$data['orders'] = $this->MyQuery->getOrder(false);
+		// echo "<pre>";
+		// print_r($data['orders']);
 		// die();
 		$this->template->load_u('_user_template', 'orders', $data);
+	}
+
+	public function add_order(){
+		checkUserLogin();
+		$post = $this->input->post();
+		$total_harga = array_sum($post['total_price']);
+		$permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$order_code = str_pad($this->session->userdata('id_user'), 4, "0", STR_PAD_LEFT)."-".substr(str_shuffle($permitted_chars), 0, 6);
+		$data_order = array(
+			"id_user"		=> $this->session->userdata('id_user'),
+			"order_code" 	=> $order_code,
+			"status"	 	=> "1",
+			"read"		 	=> "2",
+			"total_harga"	=> $total_harga,
+			"date_created"	=> date('Y-m-d h:i:s'),
+			"date_updated"	=> date('Y-m-d h:i:s'),
+			
+		);
+		// print_r($data_order);
+		
+		$id_order = $this->MyQuery->insertWithLastId('t_order', $data_order);
+		if(!is_numeric($id_order)){
+			// print_r($last_id);
+			$this->session->set_flashdata('error', true);
+			return redirect($_SERVER['HTTP_REFERER']);
+			// die();
+		}
+
+		// $tmp = array();
+		foreach ($post as $key => $value) {
+			foreach ($value as $nkey => $nvalue) {
+				$tmp[$nkey][$key] = $nvalue;
+				// $ndata[$nkey]= array(
+				// 	"test" => $key[$nk]
+				// );
+			}
+		}
+		foreach ($tmp as $key => $value) {
+			$ndata[$key] = array(
+				"id_product" 		=> $value["id_product"],
+				"id_user"	 		=> $this->session->userdata('id_user'),
+				"qty"				=> $value["qty_sewa"],
+				"id_order"			=> $id_order,
+				"order_start_date"	=> date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $value["tgl_sewa"])[0]))),
+				"order_end_date"	=> date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $value["tgl_sewa"])[1]))),
+				"date_created"		=> date('Y-m-d h:i:s'),
+				"date_updated"		=> date('Y-m-d h:i:s'),
+				"status"			=> "2",
+				"total_price"		=> $value["total_price"]
+			);
+			// echo $value["id_product"]."<br>";
+		}
+		// print_r($ndata);
+		// die();
+		$this->MyQuery->insertBatch('t_order_cart', $ndata);
+		$this->session->set_flashdata('info_order', true);
+		return redirect($_SERVER['HTTP_REFERER']);
+		
 	}
 }

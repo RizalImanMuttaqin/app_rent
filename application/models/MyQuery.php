@@ -100,4 +100,39 @@ class MyQuery extends CI_Model {
                 $this->db->where('id_cart', $id);
                 $this->db->delete("t_order_cart");
         }
+
+        public function insertWithLastId($table, $param){
+                if($this->db->insert($table, $param)){
+                        $insert_id = $this->db->insert_id();
+                        return  $insert_id;
+                }
+                return false;
+        }
+
+        public function getOrder($status, $isAdmin = false){
+                if($isAdmin){
+                        $id_user = $this->session->userdata('id_user');
+                        $this->db->where('id_user', $id_user);
+                }
+                if($status){
+                        $this->db->where('status', $status);
+                }
+                
+                $this->db->order_by("t_order.date_created", "desc");
+                // $this->db->join('t_product', 't_product.id_product = t_order_cart.id_product');
+                $query = $this->db->get("t_order");
+                // echo $this->db->last_query();
+                return $query->result();
+        }
+
+        public function getProductOrder($id_order)
+        {
+                // $id_user = $this->session->userdata('id_user');
+                // $this->db->where('status', '1');
+                $this->db->where('id_order', $id_order);
+                // $this->db->order_by("t_order_cart.date_created", "desc");
+                $this->db->join('t_product', 't_product.id_product = t_order_cart.id_product');
+                $query = $this->db->get("t_order_cart");
+                return $query->result();
+        }
 }

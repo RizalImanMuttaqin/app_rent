@@ -1,30 +1,28 @@
-<!-- Content
-		============================================= -->
-<!-- <img src=""> -->
-<section id="page-title" class="page-title-left"
-    style="background-image: url('<?php echo base_url('assets/user_template/images/bgtittle.jpg'); ?>'); background-attachment: fixed;">
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Product
+      </h1>
+      <div style="padding-top: 10px">
+        <?php echo $this->session->flashdata('info'); ?>
+      </div>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <!-- <li><a href="#">Tables</a></li> -->
+        <li class="active">Product</li>
+      </ol>
+    </section>
 
-    <div class="container clearfix">
-        <h1 style="color: white; text-shadow: 2px 2px 5px black;"><i class="icon-clipboard"></i> Order</h1>
-        <ol class="breadcrumb">
-            <!-- <li class="breadcrumb-item"><a href="#"><b style="color: white">Home</b></a></li>
-					<li class="breadcrumb-item"><a href="#"><b style="color: white">Berita Desa</b></a></li>
-					<li class="breadcrumb-item active" aria-current="page"><b style="color: #DFDFDFDF">Kategori Berita</b></li> -->
-        </ol>
-    </div>
-
-</section>
-
-<section id="content">
-
-    <div class="content-wrap">
-
-        <?php $this->load->view('_partials_user/_breaking_news'); ?>
-
-
-        <div class="container clearfix">
-
-            <div class="row nobottommargin clearfix">
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- /.box -->
+          <div class="box">
+            <div class="box-body">
+              <!-- //disini -->
+              <div class="row nobottommargin clearfix">
 
                 <!-- <div class="col-md-12">
 							<h3><i class="icon-shopping-cart"></i> Cart</h3>
@@ -133,8 +131,19 @@
                 <?php endforeach; ?>
 
             </div><!-- .postcontent end -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
 
-    </div>
 
-</section><!-- #content end -->
+<!-- </div>
+</div>
+</div> -->
