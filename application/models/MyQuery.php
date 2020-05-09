@@ -18,6 +18,8 @@ class MyQuery extends CI_Model {
                 }
                 $this->db->order_by($table.".date_created", "desc");
                 $query = $this->db->get($table);
+                // echo $this->db->last_query();
+
                 return $query->result();
         }
 
@@ -135,4 +137,6 @@ class MyQuery extends CI_Model {
                 $query = $this->db->get("t_order_cart");
                 return $query->result();
         }
+
+
 }

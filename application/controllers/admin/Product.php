@@ -11,7 +11,7 @@ class Product extends CI_Controller {
 			redirect(base_url("login"));
 		}
 	}
-	public function index()
+	public function master()
 	{
 		$data['css'] = "<link rel=stylesheet href=".base_url('assets/admin_template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css').">";
 		$data['js'] = "

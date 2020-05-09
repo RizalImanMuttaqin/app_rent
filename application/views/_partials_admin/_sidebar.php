@@ -25,22 +25,21 @@
             <span>Company Profile</span>
           </a>
         </li>
-        <li class="<?php echo ($this->uri->segment(2)=='product') ? 'active' : '';?>">
-          <a href="<?php echo base_url('admin/product')?>">
+        <li class="treeview <?php echo ($this->uri->segment(2)=='product') ? 'active' : '';?>">
+          <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Products</span>
           </a>
+          <ul class="treeview-menu">
+            <li class="<?php echo ($this->uri->segment(3)=='master') ? 'active' : '';?>"><a href="<?php echo base_url('admin/product/master')?>"><i class="fa fa-circle-o"></i> Product Master</a></li>
+            <li class="<?php echo ($this->uri->segment(3)=='stock') ? 'active' : '';?>"><a href="<?php echo base_url('admin/product/stock')?>"><i class="fa fa-circle-o"></i> Product Stock</a></li>
+            <li class="<?php echo ($this->uri->segment(3)=='schedule') ? 'active' : '';?>"><a href="<?php echo base_url('admin/product/schedule')?>"><i class="fa fa-circle-o"></i> Product Schedule</a></li>
+          </ul>
         </li>
         <!-- <li class="<?php echo ($this->uri->segment(2)=='artikel') ? 'active' : '';?>">
           <a href="<?php echo base_url('admin/artikel')?>">
             <i class="fa fa-files-o"></i>
             <span>Artikel Desa</span>
-          </a>
-        </li> -->
-        <!-- <li class="<?php echo ($this->uri->segment(2)=='kegiatan') ? 'active' : '';?>">
-          <a href="<?php echo base_url('admin/kegiatan')?>">
-            <i class="fa fa-files-o"></i>
-            <span>Kegiatan Desa</span>
           </a>
         </li> -->
         <li class="<?php echo ($this->uri->segment(2)=='media') ? 'active' : '';?>">
@@ -51,23 +50,33 @@
         </li>
 
 
-        <li class="<?php echo ($this->uri->segment(2)=='transaction') ? 'active' : '';?>">
-          <a href="<?php echo base_url('admin/transaction')?>">
+        <li class="treeview <?php echo ($this->uri->segment(2)=='transaction') ? 'active' : '';?>">
+          <a href="#">
             <i class="fa fa-files-o"></i>
             <span>Transaction</span>
           </a>
+          <ul class="treeview-menu">
+            <li class="<?php echo ($this->uri->segment(3)=='inProcess') ? 'active' : '';?>"><a href="<?php echo base_url('admin/transaction/inProcess')?>"><i class="fa fa-circle-o"></i> Orders on Process</a></li>
+            <li class="<?php echo ($this->uri->segment(3)=='offers') ? 'active' : '';?>"><a href="<?php echo base_url('admin/transaction/offers')?>"><i class="fa fa-circle-o"></i> Orders Offers</a></li>
+            <li class="<?php echo ($this->uri->segment(3)=='history') ? 'active' : '';?>"><a href="<?php echo base_url('admin/transaction/history')?>"><i class="fa fa-circle-o"></i> Order History</a></li>
+            <li class="<?php echo ($this->uri->segment(3)=='reject') ? 'active' : '';?>"><a href="<?php echo base_url('admin/transaction/reject')?>"><i class="fa fa-circle-o"></i> Orders Reject</a></li>
+          </ul>
         </li>
         
-        <!-- <li class="<?php echo ($this->uri->segment(2)=='pengaduan') ? 'active' : '';?>">
-          <a href="<?php echo base_url('admin/pengaduan')?>">
+        <!-- <li class="treeview">
+          <a href="#">
             <i class="fa fa-files-o"></i>
-            <span>Transaction</span>
+            <span>Layout Options</span>
             <span class="pull-right-container">
-              <?php if ($notif = $this->MyQuery->getNotif() != 0) :?>
-              <small class="label pull-right bg-red"><?php echo $notif; ?></small>
-              <?php endif; ?>
+              <span class="label label-primary pull-right">4</span>
             </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
+            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
+            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
+            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+          </ul>
         </li> -->
     </section>
     <!-- /.sidebar -->

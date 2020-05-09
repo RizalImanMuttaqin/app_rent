@@ -62,7 +62,9 @@
 										Search Our Product
 									</h3>
 								<div class="counter counter-lined" style="padding-right: 30%; padding-left: 30%;">
-									<input type="text" style="color: white;" class="form-control" placeholder="type enter to search" ></input>
+								<form method="GET" action="<?=base_url('index/product');?>">
+									<input type="text" style="color: white;" class="form-control" placeholder="type enter to search" name="search" ></input>
+								</form>
 									<!-- <i class="i-plain i-xlarge divcenter icon-search" ></i> -->
 								</div>
 								<!-- </a> -->

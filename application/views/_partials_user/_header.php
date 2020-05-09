@@ -67,10 +67,7 @@
 									<?php endforeach; ?>
 								</ul>
 							</li>
-							<!-- <li class="current"><a href="<?php echo base_url('artikel');?>"><div>Article</div></a></li> -->
-							<!-- <li class="current"><a href="<?php echo base_url('peraturan-desa');?>"><div>Term and Condition</div></a></li> -->
 							<?php 
-							// print_r($this->session->userdata("admin")); 
 							if(!$this->session->userdata("status")) : 
 							?>
 							<li class="current"><a href="<?php echo base_url('index/sign');?>"><div>Register/Login</div></a></li>
@@ -78,28 +75,19 @@
 							<li class="current"><a href="#"><div><i class="icon-user"></i><?=substr($this->session->userdata('name'), 0, 7)?><i class="icon-angle-down"></i></div></a>
 								<ul>
 									<li><a href="<?php echo base_url('index/cart');?>"><div><i class="icon-shopping-cart"></i>Cart</div></a></li>
-									<li><a href="<?php echo base_url('index/order');?>"><div><i class="icon-clipboard"></i>Order</div></a></li>
+									<li><a href="#"><div><i class="icon-clipboard"></i>Order</div></a>
+										<ul>
+											<li><a href="<?php echo base_url('index/order_on_process');?>"><i class="icon-tags"></i>Order on Process</a></li>
+											<li><a href="<?php echo base_url('index/order_success');?>"><i class="icon-ok"></i>Order Success</a></li>
+											<li><a href="<?php echo base_url('index/order_cancel');?>"><i class="icon-remove"></i>Order Cancel/Reject</a></li>
+										</ul>
+									</li>
 									<li><a href="<?php echo base_url('index/signOut');?>"><div><i class="icon-signout"></i>Logout</div></a></li>
-									<!-- <li><a href="<?php echo base_url('galeri-desa');?>"><div>Galeri Desa</div></a></li>
-									<li><a href="<?php echo base_url('peraturan-desa');?>"><div>Peraturan Desa</div></a></li>
-									<li><a href="<?php echo base_url('anggaran-desa');?>"><div>Anggaran Desa</div></a></li>
-									<li><a href="<?php echo base_url('berita');?>"><div>Berita Desa</div></a></li>
-									<li><a href="<?php echo base_url('kegiatan');?>"><div>Kegiatan Desa</div></a></li>
-									<li><a href="<?php echo base_url('buruh-migran');?>"><div>Buruh Migran</div></a></li> -->
 								</ul>
 							</li>
 							<?php endif; ?>
 						</ul>
 
-						<!-- Top Search
-						============================================= -->
-						<!-- <div id="top-search">
-							<a href="#" id="top-search-trigger"><i class="icon-search3"></i><i class="icon-line-cross"></i></a>
-							<form action="<?php echo base_url('berita/');?>" method="get">
-								<input type="text" name="search" class="form-control" value="" placeholder="Type &amp; Hit Enter..">
-							</form>
-						</div> -->
-						<!-- #top-search end -->
 
 					</nav><!-- #primary-menu end -->
 
