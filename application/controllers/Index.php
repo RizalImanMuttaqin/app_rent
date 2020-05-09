@@ -14,6 +14,7 @@ class Index extends CI_Controller {
 		$this->load->model('ModKegiatan');
 		$this->load->model('ModArtikel');
 		$this->load->model('ModLogin');
+		$this->load->model('ModTransaction');
 
 	}
 	public function index()
@@ -232,6 +233,9 @@ class Index extends CI_Controller {
 	{
 		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$search = $this->input->get('search');
+
+		if($kategori == null) $kategori = $this->input->get('category');
+		if($kategori=="all") $kategori = null;
 		// var_dump($kategori, $search);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
@@ -436,17 +440,53 @@ class Index extends CI_Controller {
 	}
 
 
-	public function order()
+	public function order_on_process()
 	{
 		checkUserLogin();
 		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
-		$data['orders'] = $this->MyQuery->getOrder(false);
+		$data['orders'] = $this->ModTransaction->getOrderUser([1,2,3,4]);
 		// echo "<pre>";
 		// print_r($data['orders']);
 		// die();
-		$this->template->load_u('_user_template', 'orders', $data);
+		$this->template->load_u('_user_template', 'orders_on_process', $data);
+	}
+
+	public function order_success()
+	{
+		checkUserLogin();
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
+		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['orders'] = $this->ModTransaction->getOrderUser([5]);
+		// echo "<pre>";
+		// print_r($data['orders']);
+		// die();
+		$this->template->load_u('_user_template', 'orders_success', $data);
+	}
+
+	public function order_cancel()
+	{
+		checkUserLogin();
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
+		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
+		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['orders'] = $this->ModTransaction->getOrderUser([0, 6]);
+		// echo "<pre>";
+		// print_r($data['orders']);
+		// die();
+		$this->template->load_u('_user_template', 'orders_cancel', $data);
+	}
+	public function order_submit_offers($id_order){
+		checkUserLogin();
+		$this->ModTransaction->submitOffersUser($id_order);
+		$data = $this->ModTransaction->getOrderDetails($id_order);
+		// print_r($data->order_code);
+		// die();
+		$this->session->set_flashdata('submit_offers', $data->order_code);
+		return redirect($_SERVER['HTTP_REFERER']);
+	
 	}
 
 	public function add_order(){

@@ -157,8 +157,11 @@
 	$("#top_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#top_selectall").prop("checked")) )
 	$("#bot_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#bot_selectall").prop("checked")) )
 
+	// let offers = null;
+	const offers = "<?php echo $this->session->flashdata('submit_offers')?>";
 
-	$("#offer").click(() => {
+	console.log(offers, "kkk")
+	if(offers){
 		Swal.fire({
 				title: '<strong>Succes</strong>',
 				icon: 'info',
@@ -173,12 +176,12 @@
 				'<i class=""></i> No thanks',
 			}).then((result) => {
 				if (result.value) {
-					let msg = "Saya ingin mengajukan penawaran untuk id Order 3333".split(" ").join("%20")
+					let msg = "Saya ingin mengajukan penawaran untuk id Order "+offers.split(" ").join("%20")
 					console.log(msg)
 					return window.open("https://api.whatsapp.com/send?phone=6281280972009&text="+msg, "_blank");
 				}
 		})
-	})
+	}
 	</script>
 </body>
 </html>

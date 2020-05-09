@@ -25,24 +25,31 @@
 						
 						<div class="single-post nobottommargin">
 							<div class="clearfix">
+								<form method="GET" action="<?=base_url('index/product');?>">
 								<div class="col-lg-12 col-md-12 center" style="background-color:white; padding: 20px 0px 100px 0px;">
 										<div class="col_one_third">
 											<label for="category" style="float: left;">Category : </label>
-											<select type="text" id="category" name="category" value="" class="sm-form-control">
-												<option>Show All Product</option>
-												<option>Camera</option>
-												<option>Lens</option>
+											<select type="text" id="category" name="category" value="" style="height: 40px;" class="sm-form-control">
+												<option value="all">Show All Product</option>
+												<?php foreach ($kategoris as $kategori) : ?>
+													<option value="<?=$kategori->id_kategori?>" <?php echo ($this->uri->segment(3)==$kategori->id_kategori || $this->input->get('category')== $kategori->id_kategori ) ? 'selected' : ''; ?>>
+														<?=$kategori->nama_kategori?>
+													</option>
+												<?php endforeach; ?>
+												<!-- <option value="all" selected><?=$this->uri->segment(3)?></option> -->
 											</select>
 										</div>
 										<div class="col_one_third">
 											<label for="category" style="float: left;">Search : </label>
-											<input type="text" id="telepon" name="passlogin" value="" class="sm-form-control" />
+											<input type="text" id="telepon" name="search" value="" class="sm-form-control" />
 										</div>
 										<div class="col_one_third col_last">
 											<!-- <label for="category" style="float: left;"></label> -->
 											<button class="btn btn-info" type="submit" style="float: right; margin-top: 30px; font-weight: bold;">Filter</button>
+											<a class="btn btn-info"  href="<?=base_url('index/product');?>" style="float: right; margin-top: 30px; font-weight: bold; margin-right: 10px;">Clear</a>
 										</div>
 								</div>
+								</form>
 							</div>
 
 							<div class="container clearfix" style="padding-top: 40px;">

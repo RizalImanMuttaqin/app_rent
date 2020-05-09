@@ -1,30 +1,28 @@
-<!-- Content
-		============================================= -->
-<!-- <img src=""> -->
-<section id="page-title" class="page-title-left"
-    style="background-image: url('<?php echo base_url('assets/user_template/images/bgtittle.jpg'); ?>'); background-attachment: fixed;">
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Transaction
+      </h1>
+      <div style="padding-top: 10px">
+        <?php echo $this->session->flashdata('info'); ?>
+      </div>
+      <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <!-- <li><a href="#">Tables</a></li> -->
+        <li class="active">Transaction</li>
+      </ol>
+    </section>
 
-    <div class="container clearfix">
-        <h1 style="color: white; text-shadow: 2px 2px 5px black;"><i class="icon-clipboard"></i> Order</h1>
-        <ol class="breadcrumb">
-            <!-- <li class="breadcrumb-item"><a href="#"><b style="color: white">Home</b></a></li>
-					<li class="breadcrumb-item"><a href="#"><b style="color: white">Berita Desa</b></a></li>
-					<li class="breadcrumb-item active" aria-current="page"><b style="color: #DFDFDFDF">Kategori Berita</b></li> -->
-        </ol>
-    </div>
-
-</section>
-
-<section id="content">
-
-    <div class="content-wrap">
-
-        <?php $this->load->view('_partials_user/_breaking_news'); ?>
-
-
-        <div class="container clearfix">
-
-            <div class="row nobottommargin clearfix">
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <!-- /.box -->
+          <div class="box">
+            <div class="box-body">
+              <!-- //disini -->
+              <div class="row nobottommargin clearfix">
 
                 <!-- <div class="col-md-12">
 							<h3><i class="icon-shopping-cart"></i> Cart</h3>
@@ -50,7 +48,7 @@
                                         <?php
                                         $st = $value->status; 
                                         if($st == '1') echo "Waiting Payment";
-                                        elseif($st == '2') echo "Submits Offers";
+                                        elseif($st == '2') echo "Admin Offers";
                                         elseif($st == '3') echo "Admin Offers";
                                         elseif($st == '4') echo "Checking Payment";
                                         elseif($st == '5') echo "Order Success";
@@ -62,17 +60,35 @@
                                         <ul class="list-unstyled">
                                             <li><span style="padding-right: 10%;">Total (Rp)</span> <b
                                                     style="float: right;" class="formatNumbers"><?=$value->total_harga?></b></li>
-                                            <li><span style="padding-right: 10%;">Discount (Rp)</span> <b
-                                                    style="float: right; color: red;" class="formatNumbers"><?=$value->potongan_harga?></b></li>
-                                            <li><span style="padding-right: 10%;">Total Ammount (Rp)</span> <b
+                                            <li><span style="padding-right: 10%;">Discount (Rp)</span> 
+                                                <?php if($st == 2) :?>
+                                                <!-- <input style="float: right; color: red; text-align: right;"><?=$value->potongan_harga?> -->
+                                                <b
+                                                style="float: right; color: red;" class="formatNumbers">200000</b></li>
+                                                
+                                                <li><span style="padding-right: 10%;">Total Ammount (Rp)</span> <b
+                                                    style="float: right; color: green;" class="formatNumbers">2.700.000</b></li>
+                                        
+                                                <?php else :?>
+                                                <b
+                                                style="float: right; color: red;" class="formatNumbers"><?=$value->potongan_harga?></b></li>
+                                                <li><span style="padding-right: 10%;">Total Ammount (Rp)</span> <b
                                                     style="float: right; color: green;" class="formatNumbers"><?=($value->total_harga - $value->potongan_harga)?></b></li>
+                                        
+                                                <?php endif; ?>
                                         </ul>
                                     </div>
                                     <div class="col-md-2 pull-right">
-                                        <button type="button" class="btn btn-sm btn-info col-md-12">Upload Payment
-                                            Slip</button>
-                                        <button type="button" <?=$st==1?"":"disabled"?> class="btn btn-sm btn-success col-md-12 mt-2"
-                                            id="offer">Submit Offer</button>
+                                        <button type="button" class="btn btn-sm btn-info col-md-12">Confirm Payment
+                                            </button>
+                                        <?php if($st == 2) :?>
+                                            <!-- <input style="float: right; color: red; text-align: right;"><?=$value->potongan_harga?> -->
+                                            
+                                            <!-- <button type="button" class="btn btn-sm btn-success col-md-12 mt-2" style="margin-top: 5px;"
+                                                id="offer" onclick="window.location.reload()">Admin Offer</button> -->
+                                        <?php endif;?>
+                                        <!-- <button type="button" <?=$st==1?"":"disabled"?> class="btn btn-sm btn-success col-md-12 mt-2"
+                                            id="offer">Submit Offer</button> -->
                                         <!-- <button type="button" class="btn btn-sm btn-success col-md-12">Cancel Ordet</button> -->
                                     </div>
                                 </div>
@@ -91,6 +107,7 @@
                                                 <td>Qty</td>
                                                 <td>Rental Date</td>
                                                 <td>Total Price</td>
+                                                <!-- <td>Discount</td> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -102,7 +119,7 @@
                                             <tr>
                                                 <td style="width: 10%;">
                                                     <a href="<?php echo base_url('assets/upload/'.$product->foto); ?>"
-                                                        data-lightbox="image"><img class="image_fade"
+                                                        data-lightbox="image"><img class="image_fade" style="width: 80px;"
                                                             src="<?php echo base_url('assets/upload/'.$product->foto); ?>"></a>
                                                 </td>
                                                 <td style="width: 20%;"><b><?=$product->judul?></b></td>
@@ -121,6 +138,7 @@
                                                         style="flex: none; width: 210px; height: 30px;">
                                                 </td>
                                                 <td style="width: 15%;">Rp. <b class="formatNumbers"><?=$product->total_price?></b></td>
+                                                <!-- <td><input  type="text"></td> -->
                                             </tr>
                                                 <?php endforeach; ?>
                                         </tbody>
@@ -133,8 +151,19 @@
                 <?php endforeach; ?>
 
             </div><!-- .postcontent end -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
         </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
 
-    </div>
 
-</section><!-- #content end -->
+<!-- </div>
+</div>
+</div> -->
