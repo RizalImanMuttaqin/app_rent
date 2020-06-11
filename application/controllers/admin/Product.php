@@ -232,4 +232,48 @@ class Product extends CI_Controller {
 				</div>');
 			redirect($_SERVER['HTTP_REFERER']);
 	}
+
+
+	public function stock()
+	{
+			$data['css'] = "<link rel=stylesheet href=".base_url('assets/admin_template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css').">";
+			$data['js'] = "
+				<script src=".base_url('assets/admin_template/bower_components/datatables.net/js/jquery.dataTables.min.js')."></script>
+				<script src=".base_url('assets/admin_template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')."></script>
+				<script src=".base_url('assets/custom/config_datatable.js')."></script>
+				<script src=".base_url('assets/custom/config_ckeditor.js')."></script>
+				<script src=".base_url('assets/admin_template/bower_components/ckeditor/ckeditor.js')."></script>
+				<script src=".base_url('assets/admin_template/bower_components/select2/dist/js/select2.full.min.js')."></script>
+				";
+			$data['kategoris'] = $this->MyQuery->get('m_kategori');
+			$date = $this->input->get('date');
+			if($date){
+				$date = date('Y-m-d', strtotime($date));
+			}else{
+				$date = date('Y-m-d');
+			}
+			$data['products'] = $this->ModProduct->getStock($date);
+
+			$this->template->load_a('_admin_template', 'product_stock', $data);
+
+		}
+
+	public function schedule()
+	{
+		$data['css'] = "<link rel=stylesheet href=" . base_url('assets/admin_template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') . ">";
+		$data['js'] = "
+				<script src=" . base_url('assets/admin_template/bower_components/datatables.net/js/jquery.dataTables.min.js') . "></script>
+				<script src=" . base_url('assets/admin_template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') . "></script>
+				<script src=" . base_url('assets/custom/config_datatable.js') . "></script>
+				<script src=" . base_url('assets/custom/config_ckeditor.js') . "></script>
+				<script src=" . base_url('assets/admin_template/bower_components/ckeditor/ckeditor.js') . "></script>
+				<script src=" . base_url('assets/admin_template/bower_components/select2/dist/js/select2.full.min.js') . "></script>
+				";
+		$data['kategoris'] = $this->MyQuery->get('m_kategori');
+		// $date = date('Y-m-d');
+		$date = "2020-05-18";
+		$data['products'] = $this->ModProduct->getSchedule($date);
+
+		$this->template->load_a('_admin_template', 'product_schedule', $data);
+	}
 }

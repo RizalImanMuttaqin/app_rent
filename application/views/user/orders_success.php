@@ -29,14 +29,14 @@
                     <!-- <p>Lakukan pembayaran menggunakan bla . . . . . . </p> -->
                 </div>
                 <!-- .entry-title end -->
-                <?php if(!$orders) : ?>
+                <?php if (!$orders) : ?>
                     <div class="col-md-12" style="overflow: scroll;">
                         <div class="card">
                             <br>
                             <h4 style="padding-left:45%">Order Data Empty</h4>
                         </div>
                     </div>
-                <?php endif;?>
+                <?php endif; ?>
                 <?php
                 // $orders = [1,2];
                 foreach ($orders as $key => $value) : ?>
@@ -72,8 +72,10 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-2 pull-right">
-                                            <button type="button" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></button>                                    
-                                           
+                                            <!-- <button type="button" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></button> -->
+                                            <?php if($value->bukti_tf):?>
+                                            <a class="btn btn-sm btn-default col-md-12" href="<?php echo base_url('assets/upload/payment/' . $value->bukti_tf); ?>" data-lightbox="image"><small>View Payment Slip</small></a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                 </div>

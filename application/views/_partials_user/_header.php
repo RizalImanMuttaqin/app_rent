@@ -36,7 +36,8 @@
 
 		<!-- Header
 		============================================= -->
-		<header id="header" class="transparent-header full-header" data-sticky-class="not-dark">
+		<header id="header" class="transparent-header full-header" data-sticky-class="dark">
+		<!-- LAMA <header id="header" class="transparent-header full-header" data-sticky-class="not-dark"> -->
 
 			<div id="header-wrap">
 
@@ -46,10 +47,10 @@
 
 					<!-- Logo
 					============================================= -->
-					<div id="logo">
-						<h3 style="font-family: 'Fugaz One',sans-serif; margin-top: 10px;">Brainbox Equipment</h3>
-						<!-- <a href="<?php echo base_url('/');?>" class="standard-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/brainbox.png')?>"><img src="<?php echo base_url('assets/user_template/images/brainbox.png'); ?>" alt="Canvas Logo"></a>
-						<a href="<?php echo base_url('/');?>" class="retina-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/brainbox.png')?>"><img src="<?php echo base_url('assets/user_template/images/brainbox.png'); ?>" alt="Canvas Logo"></a> -->
+					<div id="logo" style="background-color: white;">
+						<a href="<?php echo base_url('/');?>" class="standard-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/brainbox.png')?>"><img src="<?php echo base_url('assets/user_template/images/brainbox.png'); ?>" alt="Canvas Logo"></a>
+						<a href="<?php echo base_url('/');?>" class="retina-logo" data-dark-logo="<?php echo base_url('assets/user_template/images/brainbox.png')?>"><img src="<?php echo base_url('assets/user_template/images/brainbox.png'); ?>" alt="Canvas Logo"></a>
+						<!-- <t style="font-family: 'Fugaz One',sans-serif;">Brainbox Equipment</t> -->
 					</div><!-- #logo end -->
 
 					<!-- Primary Navigation

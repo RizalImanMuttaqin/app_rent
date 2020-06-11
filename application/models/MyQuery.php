@@ -138,5 +138,26 @@ class MyQuery extends CI_Model {
                 return $query->result();
         }
 
+        public function uploadPayment($id, $data)
+        {
+                $id_user = $this->session->userdata('id_user');
+                $sql = '
+                UPDATE t_order t1 SET t1.status = ?, t1.bukti_tf = ?, t1.read = ?
+                WHERE t1.id_order = ? AND t1.id_user = ?';
+                // echo "<pre>";
+                $query = $this->db->query($sql, [$data['status'], $data['bukti_tf'], $data['read'], $id, $id_user]);
+                return $query;
+        }
+
+        public function getAccount()
+        {
+                $sql = '
+                SELECT name, phone, email, address FROM m_users;
+                ';
+                // echo "<pre>";
+                $query = $this->db->query($sql);
+                return $query->result();
+        }
+
 
 }

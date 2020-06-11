@@ -971,6 +971,7 @@ html[xmlns] .slider-wrap {display: block;}
 #header.transparent-header {
 	background: transparent;
 	border-bottom: none;
+	background-color: #ffa726;
 	z-index: 199;
 }
 
@@ -1019,7 +1020,9 @@ body.stretched #header.full-header .container {
 	padding: 0 30px;
 }
 
-#header.transparent-header.full-header #header-wrap { border-bottom: 1px solid rgba(0,0,0,0.1); }
+#header.transparent-header.full-header #header-wrap { border-bottom: 1px solid rgba(0,0,0,0.1);
+	background-color: #ffa726;
+}
 
 #slider + #header.transparent-header.full-header #header-wrap {
 	border-top: 1px solid rgba(0,0,0,0.1);

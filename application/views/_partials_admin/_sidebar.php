@@ -62,6 +62,13 @@
             <li class="<?php echo ($this->uri->segment(3)=='reject') ? 'active' : '';?>"><a href="<?php echo base_url('admin/transaction/reject')?>"><i class="fa fa-circle-o"></i> Orders Reject</a></li>
           </ul>
         </li>
+
+        <li class="<?php echo ($this->uri->segment(2)=='account') ? 'active' : '';?>">
+          <a href="<?php echo base_url('admin/account')?>">
+            <i class="fa fa-files-o"></i>
+            <span>Account</span>
+          </a>
+        </li>
         
         <!-- <li class="treeview">
           <a href="#">
