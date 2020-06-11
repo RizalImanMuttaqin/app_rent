@@ -171,40 +171,45 @@
             <!-- <div class="clearfix"></div> -->
             <div class="box-body">
               <button style="margin-bottom: 20px; margin-top: 15px" class="btn btn-primary" type="button" data-toggle="collapse" data-target="#tambah_berita" aria-expanded="false" aria-controls=""><span class="fa fa-plus"></span> Add Product</button>
-              <table id="example" class="table table-bordered table-striped" ">
-                <thead>
-                  <tr>
-                    <th>Product Title</th>
-                    <th>Category</th>
-                    <th style="width: 40%">Content</th>
-                    <th>Rental Price</th>
-                    <th>Crew Fee</th>
-                    <th>Stock</th>
-                    <th>Date Post</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php foreach ($beritas as $berita) : ?>
+              <div style="overflow: scroll">
+                <table id="example" class="table table-bordered table-striped" ">
+                  <thead>
                     <tr>
-                      <input type="hidden" id="t_foto" value="<?php echo $berita->foto ?>">
-                      <input type="hidden" id="t_id_product" value="<?php echo $berita->id_product ?>">
-                      <td id="t_judul"><?php echo $berita->judul ?></td>
-                      <td id="t_nama_kategori"><?php echo $berita->nama_kategori ?></td>
-                      <td id="t_konten"><?php echo htmlspecialchars($berita->konten) ?></td>
-                      <td>Rp. <?=number_format($berita->harga_sewa, 0,",",".")?></td>
-                      <td>Rp. <?=number_format($berita->harga_sewa_crew, 0,",",".")?></td>
-                      <td><?=number_format($berita->stock, 0,",",".")?></td>
-                      <td><?php echo date('d-m-Y h:i:s', strtotime($berita->date_created)); ?></td>
-                      <td><a href="<?php echo base_url('admin/product/deleteProduct/'.$berita->id_product);?>" title="Hapus" class="btn btn-danger confirmation"><span class="fa fa-trash"></span></a>
-                        <a title="Edit Berita" class="btn btn-warning editModal">
-                          <span class="fa fa-edit"></span>
-                        </a>
-                      </td>
+                      <th>Product Title</th>
+                      <th>Category</th>
+                      <th style="width: 40%">Content</th>
+                      <th>Rental Price</th>
+                      <th>Crew Fee</th>
+                      <th>Stock</th>
+                      <th>Date Post</th>
+                      <th style="width: 5%">Action</th>
                     </tr>
-                  <?php endforeach;?>
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($beritas as $product) : ?>
+                      <tr>
+                        <input type="hidden" class="t_foto" value="<?php echo $product->foto ?>">
+                        <input type="hidden" class="t_id_product" value="<?php echo $product->id_product ?>">
+                        <td class="t_judul"><?php echo $product->judul ?></td>
+                        <td>
+                          <?php echo $product->nama_kategori ?>
+                          <input type="hidden" class="t_id_kategori" value="<?=$product->id_kategori?>">
+                        </td>
+                        <!-- <td class="t_konten"><?php echo htmlspecialchars($product->konten) ?></td> -->
+                        <td class="t_konten"><?php echo $product->konten ?></td>
+                        <td>Rp. <b class="t_harga_sewa"><?=number_format($product->harga_sewa, 0,",",".")?></b></td>
+                        <td>Rp. <b class="t_harga_crew"><?=number_format($product->harga_sewa_crew, 0,",",".")?></b></td>
+                        <td class="t_stock"><?=number_format($product->stock, 0,",",".")?></td>
+                        <td><?php echo date('d-m-Y h:i:s', strtotime($product->date_created)); ?></td>
+                        <td>
+                          <a href="<?php echo base_url('admin/product/deleteProduct/'.$product->id_product);?>" title="Hapus" class="btn btn-danger confirmation col-md-12"><span class="fa fa-trash"></span></a>
+                          <a style="margin-top: 5px" title="Edit Product" class="btn btn-warning editModal col-md-12"><span class="fa fa-edit"></span></a>
+                        </td>
+                      </tr>
+                    <?php endforeach;?>
+                  </tbody>
+                </table>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -246,12 +251,12 @@
                         <div class="row">
                           <div class="col-md-6">
                             <label>Product Name : </label>
-                            <input type="hidden" id="id_product" value="<?=$berita->id_product?>" name="id_product">
+                            <!-- <input type="text" id="id_product" name="id_product"> -->
                             <input type="text" id="judul" name="judul" class="form-control">
                           </div>
                           <div class="col-md-6">
                             <label>Product Category : </label>
-                            <select id="id_kategori" name="id_kategori" class="form-control select2" style="width: 100%;">
+                            <select id="m_id_kategori" name="id_kategori" class="form-control" style="width: 100%;">
                               <?php foreach ($kategoris as $kategori) : ?>
                                 <option value="<?php echo $kategori->id_kategori; ?>"><?php echo $kategori->nama_kategori; ?></option>
                               <?php endforeach; ?>
@@ -259,15 +264,15 @@
                           </div>
                           <div class="col-md-5" style="padding-top: 10px;">
                             <label>Rental Price / Day (IDR) : </label>
-                            <input type="text" name="harga_sewa" value='<?=number_format($berita->harga_sewa, 0,",",".")?>' class="form-control formatNumbers">
+                            <input type="text" name="harga_sewa" id="m_harga_sewa" class="form-control formatNumbers">
                           </div>
                           <div class="col-md-5" style="padding-top: 10px;">
                             <label>Crew Fee / Day (IDR) : </label>
-                            <input type="text" name="harga_sewa_crew" value='<?=number_format($berita->harga_sewa, 0,",",".")?>' class="form-control formatNumbers">
+                            <input type="text" name="harga_sewa_crew" id="m_harga_crew"  class="form-control formatNumbers">
                           </div>
                           <div class="col-md-2" style="padding-top: 10px;">
                             <label>Product Stock : </label>
-                            <input type="text" value='<?=number_format($berita->stock, 0,",",".")?>' name="stock" class="form-control formatNumbers">
+                            <input type="text" id="m_stock" name="stock" class="form-control formatNumbers">
                           </div>
                         </div>
                         <div class="row" style="padding-top: 30px; padding-bottom: 30px">

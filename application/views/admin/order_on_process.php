@@ -130,8 +130,10 @@
                                 </div>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></button>                                    
+                              <?php if($st == 4) : ?>
+                                <a href="<?=base_url('assets/upload/payment/'. $value->bukti_tf)?>" target="_blank" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></a>                                    
                                 <br><br>
+                              <?php endif; ?>
                                 <a href="<?=base_url('admin/transaction/update_confirm/'. $value->id_order);?>" class="btn btn-sm btn-info col-md-12" onclick="return confirm('Are you sure want to confirm this order?')">Confirm Payment</a>
                                 <br><br>
                                 <a href="<?=base_url('admin/transaction/update_reject/'. $value->id_order);?>" class="btn btn-sm btn-danger col-md-12" onclick="return confirm('Are you sure want to reject this order?')">Reject Order</a>

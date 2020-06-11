@@ -130,11 +130,7 @@
                                 </div>
                             </td>
                             <td>
-                                <button type="button" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></button>                                    
-                                <!-- <br><br> -->
-                                <!-- <a href="<?=base_url('admin/transaction/update_confirm/'. $value->id_order);?>" type="button" class="btn btn-sm btn-info col-md-12" onclick="return confirm('Are you sure want to confirm this order?')">Confirm Payment</a>
-                                <br><br>
-                                <a href="<?=base_url('admin/transaction/update_reject/'. $value->id_order);?>" type="button" class="btn btn-sm btn-danger col-md-12" onclick="return confirm('Are you sure want to reject this order?')">Reject Order</a> -->
+                              <a href="<?=$value->bukti_tf?base_url('assets/upload/payment/'. $value->bukti_tf):"#"?>" target="<?=$value->bukti_tf?'_blank':''?>" role="button" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></a>  
                             </td>
                       </tr>
                       

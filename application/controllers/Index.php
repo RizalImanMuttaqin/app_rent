@@ -546,4 +546,36 @@ class Index extends CI_Controller {
 		return redirect($_SERVER['HTTP_REFERER']);
 		
 	}
+	 
+	public function upload_payment(){
+		// echo "wkwkwk";
+		$id = $this->input->post('id_orders');
+		$file_name = time().'payments.jpg';
+		$config['upload_path']          = './assets/upload/payment/';
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['file_name'] 			= $file_name;
+		$config['overwrite'] 			= TRUE;
+		$this->upload->initialize($config);
+		// $this->upload->do_upload('foto');
+		if (!$this->upload->do_upload('foto')) {
+			$error = array('error' => $this->upload->display_errors());
+
+			var_dump($error);
+		}
+		$data = array(
+			'bukti_tf' 	=> $file_name,
+			'status'	=> 4,
+			'read' 		=> 2
+		);
+		if($this->MyQuery->uploadPayment($id, $data)){
+			$this->session->set_flashdata('info', '
+			<div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <b><i class="icon fa fa-check"></i> Upload payment successfull</b>
+          	</div>
+			');
+			redirect($_SERVER['HTTP_REFERER']);
+		};
+
+	}
 }

@@ -122,6 +122,18 @@
                                                         <td style="width: 15%;">Rp. <b class="formatNumbers"><?=$product->total_price?></b></td>
                                                         <!-- <td><input  type="text"></td> -->
                                                     </tr>
+                                                    <tr>
+                                                      <td colspan="5">
+                                                          <span><b>Description</b></span>
+                                                          <br>
+                                                          <textarea name="description[]" rows="7" class="form-control" style="width: 100%;"></textarea>
+                                                      </td>
+                                                      <td>
+                                                        <input name="id_cart[]" value="<?=$product->id_cart?>">
+                                                        <span><b>Offer's Price</b></span>
+                                                        <input name="offers[]" style="float: right; color: red; text-align: right;" id="discount_order" class="inputNumbers">
+                                                      </td>
+                                                    </tr>
                                                         <?php endforeach; ?>
                                                 </tbody>
                                             </table>

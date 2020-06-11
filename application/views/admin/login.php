@@ -3,7 +3,7 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <a href="#"><b>Admin Desa</b></a>
+      <a href="#"><b>Admin Brainbox</b></a>
     </div>
     <!-- /.login-logo -->
     <div style="padding-top: 10px">

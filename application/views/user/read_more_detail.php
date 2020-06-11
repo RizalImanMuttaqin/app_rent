@@ -67,7 +67,9 @@
 									Crew fee : IDR <b
 										id="crew_sewa"><?=number_format($data->harga_sewa_crew,0,",",".")?></b> / Day
 									<br>
-									Sewa 7 hari bayar 4 hari (tidak ada potongan untuk crew)
+									Sewa 7 hari bayar 4 hari (tidak ada potongan untuk crew).
+									<br>
+									Harga belum termasuk pajak.
 								</small>
 								<div class="col-md-12">
 									<table class="table">

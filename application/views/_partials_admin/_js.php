@@ -70,7 +70,9 @@ $('#password, #confirm_password').on('keyup', function () {
 $('.formatNumbers').number( true, 0, ',', '.')
 $('.inputNumbers').number( true, 0, ',', '.')
 
-
+$('.datepicker').datepicker({
+  format: 'dd-mm-yyyy'
+})
 
 </script>
   <?php echo (isset($js)) ? $js : ''; ?>
