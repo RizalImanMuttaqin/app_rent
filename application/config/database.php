@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => '127.0.0.1',
-	'username' => 'root',
-	'password' => 'asdf1234*',
+	'hostname' => 'localhost',
+	'username' => 'brainbox_root',
+	'password' => 'asdf_1234*_AS',
 	// 'password' => 'pinadmin411',
-	'database' => 'market_rent',
+	'database' => 'brainbox_market_rent',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
