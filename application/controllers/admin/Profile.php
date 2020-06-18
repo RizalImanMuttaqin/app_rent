@@ -14,6 +14,7 @@ class Profile extends CI_Controller {
 	public function index()
 	{
 		$data['profiles'] = $this->MyQuery->get('m_profile_desa');
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 		// echo "<pre>";
 		// print_r($data['profile']);
 		// die();
@@ -41,8 +42,15 @@ class Profile extends CI_Controller {
 			'foto'	=> $id.'gambar.jpg',
 			'date_updated'	=> date('Y-m-d h:i:s'),
 		);
-		if ($id == 6) {
+		if ($id == 6 || $id == 8) {
 			$data['judul'] = $this->input->post('judul');
+		}
+		if ($id == 6){
+			$ndata = array(
+				"email" => $this->input->post('email'),
+				"phone" => $this->input->post('phone')
+			);
+			$this->MyQuery->updateAdmin($ndata);
 		}
 		// echo "<pre>";
 		// print_r($data);

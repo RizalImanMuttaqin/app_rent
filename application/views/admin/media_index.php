@@ -108,19 +108,19 @@
     </section>
 
 
-
+<!--
     <section class="content">
       <div class="row">
         <div class="col-xs-12">
-          <!-- /.box -->
+          <!- - /.box - ->
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">
                 Tambah Foto Galeri
               </h3>
             </div>
-            <!-- /.box-header -->
-            <!-- <div class="clearfix"></div> -->
+            <!- - /.box-header - ->
+            <!- - <div class="clearfix"></div> - ->
             <div class="box-body">
               <form action="<?php echo base_url('admin/media/addGaleri');?>" class="" method="post" enctype="multipart/form-data" style="padding-bottom: 30px">
                 <div class="row">
@@ -141,9 +141,9 @@
                       <option >Produk Lokal</option>
                     </select>
                   </div>
-                  <!-- <div class="col-md-6"><label></label></div> -->
+                  <!- - <div class="col-md-6"><label></label></div> - ->
                   <div class="col-md-3" style="padding-top: 30px">
-                    <!-- <label>Masukan Gambar : </label> -->
+                    <!- - <label>Masukan Gambar : </label> - ->
                     <input class="pull-right" type="file" required="required" name="foto">
                   </div>
                   <div class="col-md-2" style="padding-top: 30px">
@@ -161,14 +161,14 @@
                           <?php endforeach; ?>
                           
 
-                        </ul><!-- #portfolio-filter end -->
+                        </ul><!- - #portfolio-filter end - ->
                         <br>
                         <br>
                         <br>
                       <div id="portfolio" style="padding-left: 30px" class="portfolio grid-container portfolio-nomargin clearfix">
 
                         <?php $x=0; foreach ($galeris as $galeri) : ?>
-                          <!-- <?php if ($x==4) { echo '<div class="row">'; } ?> -->
+                          <!- - <?php if ($x==4) { echo '<div class="row">'; } ?> - ->
                           <div style="margin: 3%;" class="col-md-3 portfolio-item pf-<?php echo str_replace(' ', '_', $galeri->kategori_foto); ?>">
                             <div class="thumbnail">
                               <a href="<?php echo base_url('assets/upload/'.$galeri->filename) ?>" target="_blank">
@@ -176,36 +176,36 @@
                                 <div class="caption">
                                   <b><?php echo $galeri->judul; ?></b><br>
                                   <p><?php echo $galeri->keterangan; ?></p>
-                                  <!-- <p><?php echo $galeri->kategori_foto; ?></p> -->
+                                  <!- - <p><?php echo $galeri->kategori_foto; ?></p> - ->
                                 </div>
                                 <a href="<?php echo base_url('admin/media/deleteGaleri/'.$galeri->id_galeri);?>" title="Hapus" class="btn btn-danger btn-xs confirmation"><span class="fa fa-trash"></span></a>
                               </a>
                             </div>
                           </div>
-                          <!-- <?php if ($x==4) { echo '</div>'; } $x++; $x=0; ?> -->
+                          <!- - <?php if ($x==4) { echo '</div>'; } $x++; $x=0; ?> - ->
                         <?php endforeach; ?>
                       </div>
                   
                 </div>
-                <!-- /.box-body -->
+                <!- - /.box-body - ->
               </div>
-              <!-- /.box -->
+              <!- - /.box - ->
             </div>
-            <!-- /.col -->
+            <!- - /.col - ->
           </div>
-          <!-- /.row -->
+          <!- - /.row - ->
         </section>
-        <!-- /.content -->
+        <!- - /.content - ->
       </div>
 
 
 
-      <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+       <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog modal-lg" role="document">
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <!-- <h4 class="modal-title" id="myModalLabel">Edit Artikel</h4> -->
+              <!- - <h4 class="modal-title" id="myModalLabel">Edit Artikel</h4> - ->
             </div>
             <div class="modal-body">
               <section class="content" id="">
@@ -216,12 +216,12 @@
                         <h3 class="box-title">
                           Ubah File Anggaran
                         </h3>
-                        <!-- tools box -->
+                        <!- - tools box - ->
                         <div class="pull-right box-tools">
                         </div>
-                        <!-- /. tools -->
+                        <!- - /. tools - ->
                       </div>
-                      <!-- /.box-header -->
+                      <!- - /.box-header - ->
                       <div class="box-body pad">
                         <form  action="<?php echo base_url('admin/media/updateAnggaran');?>" class="" method="post" enctype="multipart/form-data" style="padding-bottom: 30px">
                           <div class="row">
@@ -230,9 +230,9 @@
                               <input type="hidden" name="id_media" id="id_media">
                               <textarea id="m_keterangan" name="keterangan" class="form-control" rows="3"></textarea>
                             </div>
-                            <!-- <div class="col-md-6"><label></label></div> -->
+                            <!- - <div class="col-md-6"><label></label></div> - ->
                             <div class="col-md-4" style="padding-top: 30px">
-                              <!-- <label>Masukan Gambar : </label> -->
+                              <!- - <label>Masukan Gambar : </label> - ->
                               <input class="pull-right" type="file" name="foto">
                             </div>
                             <div class="col-md-3" style="padding-top: 30px">
@@ -243,17 +243,18 @@
 
                       </div>
                     </div>
-                    <!-- /.box -->
+                    <!- - /.box - ->
                   </div>
-                  <!-- /.col-->
+                  <!- - /.col- ->
                 </div>
-                <!-- ./row -->
+                <!- - ./row - ->
               </section>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+              <!- - <button type="button" class="btn btn-primary">Save changes</button> - ->
             </div>
           </div>
         </div>
-      </div>
+      -->
+    </div>

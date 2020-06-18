@@ -68,4 +68,13 @@ class ModTransaction extends CI_Model
         $query = $this->db->query($sql, [$status, $discount, $id_order]);
         return $query;
     }
+
+    public function updateOffers($data)
+    {
+        $sql = '
+        UPDATE t_order_cart SET description = ?, offer_price = ?
+        WHERE id_cart = ?';
+        $query = $this->db->query($sql, [$data['description'], str_replace('.', '', $data['offers']), $data['id_cart']]);
+        return $query;
+    }
 }

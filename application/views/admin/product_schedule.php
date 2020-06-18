@@ -44,7 +44,7 @@
                                             <td><?= $value->qty ?></td>
                                             <td><?= $value->name ?></td>
                                             <td><?= $value->email ?></td>
-                                            <td><?= $value->phone ?></td>
+                                            <td  onclick="chatWa('Mengenai No Order <?= $value->order_code ?>', '<?= $value->phone ?>')"><?= $value->phone ?></td>
                                             <td><?= $value->order_start_date ?></td>
                                             <td><?= $value->order_end_date ?></td>
                                         </tr>

@@ -58,9 +58,15 @@
                                             </b></div>
                                         <div class="col-md-4">
                                             <ul class="list-unstyled">
-                                                <li><span style="padding-right: 10%;">Total (Rp)</span> <b style="float: right;" class="formatNumbers"><?= $value->total_harga ?></b></li>
-                                                <li><span style="padding-right: 10%;">Discount (Rp)</span> <b style="float: right; color: red;" class="formatNumbers"><?= $value->potongan_harga ?></b></li>
-                                                <li><span style="padding-right: 10%;">Total Ammount (Rp)</span> <b style="float: right; color: green;" class="formatNumbers"><?= ($value->total_harga - $value->potongan_harga) ?></b></li>
+                                                <li><span style="padding-right: 10%;">Total (Rp)</span> <b style="float: right;" class="formatNumbers"><?= $value->total_harga ?></b>
+                                                </li>
+                                                <li>
+                                                    <span style="padding-right: 10%;">Admin Offers (Rp)</span> <b style="float: right; color: green;" class="formatNumbers"><?= ($value->potongan_harga) ?></b>
+                                                </li>
+                                                <li>
+                                                    <span style="padding-right: 10%;">Discount (Rp)</span>
+                                                    <b style="float: right; color: red;" class="formatNumbers"><?= $value->potongan_harga ? $value->total_harga - $value->potongan_harga : "" ?></b>
+                                                </li>
                                             </ul>
                                         </div>
                                         <!-- <div class="col-md-2 pull-right">
@@ -81,7 +87,8 @@
                                                     <td>Rental Price / Day</td>
                                                     <td>Qty</td>
                                                     <td>Rental Date</td>
-                                                    <td>Total Price</td>
+                                                    <!-- <td>Total Price</td> -->
+                                                    <td>Total Price / Admin Offers</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -105,7 +112,21 @@
                                                         <td style="width: 20%;">
                                                             <input type="text" readonly value="<?= date('d/m/Y', strtotime($product->order_start_date)) . " - " . date('d/m/Y', strtotime($product->order_end_date)) ?>" class="form-control" style="flex: none; width: 210px; height: 30px;">
                                                         </td>
-                                                        <td style="width: 15%;">Rp. <b class="formatNumbers"><?= $product->total_price ?></b></td>
+                                                        <td style="width: 15%;">
+                                                            Rp. <b class="formatNumbers"><?= $product->total_price ?></b>
+                                                            <br>
+                                                            Rp. <b class="formatNumbers" style="color:green"><?= $product->offer_price ?></b>
+                                                        </td>
+                                                        <!-- <td style="width: 15%;">Rp. <b class="formatNumbers"><?= $product->total_price ?></b></td> -->
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="6">
+                                                            <span><b>Description</b></span>
+                                                            <br>
+                                                            <!-- <textarea  rows="7" class="form-control" style="width: 100%;"> -->
+                                                            <?= $product->description ?>
+                                                            <!-- </textarea> -->
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </tbody>

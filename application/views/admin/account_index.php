@@ -37,7 +37,7 @@
                                         <tr>
                                             <td><?= $value->name ?></td>
                                             <td><?= $value->email ?></td>
-                                            <td><?= $value->phone ?></td>
+                                            <td onclick="chatWa('', '<?= $value->phone ?>')"><?= $value->phone ?></td>
                                             <td><?= $value->address ?></td>
                                         </tr>
 

@@ -55,7 +55,8 @@
 
 					<div class="row clearfix common-height">
 
-						<div class="col-lg-12 col-md-12 dark center" style="background-color: #515875; padding-top: 20px; padding-bottom: 40px;">
+						<!-- <div class="col-lg-12 col-md-12 dark center" style="background-color: #515875; padding-top: 20px; padding-bottom: 40px;"> -->
+						<div class="col-lg-12 col-md-12 dark center" style="background-color: #fb8c00; padding-top: 20px; padding-bottom: 40px;">
 							<div>
 								<!-- <a href="<?php echo base_url('kegiatan'); ?>" style="color: white"> -->
 									<h3>

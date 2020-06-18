@@ -1,7 +1,9 @@
 		<!-- Footer
 		============================================= -->
 		<!-- <footer id="footer" class="dark"> -->
-		<footer id="footer" class="dark" style="background-color: #515875;">
+		<footer id="footer" class="dark" style="background-color: #fb8c00;">
+		<!-- <footer id="footer" class="dark" style="background-color: #515875;"> -->
+
 
 			<!-- Copyrights
 			============================================= -->
@@ -45,7 +47,7 @@
 
 							</div>
 
-							<i class="icon-headphones"></i> (021) 22323844
+							<i class="icon-phone"></i> <a style="color: white;" target="_blank" href="https://api.whatsapp.com/send?phone=<?=$admin->phone?>&text=Hallo,%20Ada%20yang%20ingin%20saya%20tanyakan%20tentang%20product%20Brainbox"><?=$admin->phone?></a>
 						</div>
 
 					</div>
@@ -97,7 +99,7 @@
 						icon: 'error',
 						title: 'Oops...',
 						text: 'Something went wrong!',
-						footer: '<a href="https://api.whatsapp.com/send?phone=6281280972009" target="_blank">Please contact administrator for this issue</a>'
+						footer: '<a href="https://api.whatsapp.com/send?phone=<?=$admin->phone?>" target="_blank">Please contact administrator for this issue</a>'
 					})
 				} else if (cart) {
 
@@ -127,7 +129,7 @@
 						cancelButtonText: '<i class=""></i> Continue',
 					}).then((result) => {
 						if (result.value) {
-							return window.location = "<?= base_url('index/order') ?>";
+							return window.location = "<?= base_url('index/order_on_process') ?>";
 						}
 					})
 				}
@@ -147,8 +149,12 @@
 				return false;
 			}
 
-			$("#top_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#top_selectall").prop("checked")))
+			// $("#top_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#top_selectall").prop("checked")))
 			$("#bot_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#bot_selectall").prop("checked")))
+			function unCheck(e){
+				// console.log(e, "event")
+				$("#bot_selectall").prop('checked', false);
+			}
 
 			// let offers = null;
 			const offers = "<?php echo $this->session->flashdata('submit_offers') ?>";
@@ -168,7 +174,7 @@
 					if (result.value) {
 						let msg = "Saya ingin mengajukan penawaran untuk id Order " + offers.split(" ").join("%20")
 						console.log(msg)
-						return window.open("https://api.whatsapp.com/send?phone=6281280972009&text=" + msg, "_blank");
+						return window.open("https://api.whatsapp.com/send?phone=<?=$admin->phone?>&text=" + msg, "_blank");
 					}
 				})
 			}

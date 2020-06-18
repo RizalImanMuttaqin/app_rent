@@ -36,7 +36,7 @@
                                 <thead>
                                     <tr>
                                         <td>
-                                            <input checked type="checkbox" id="top_selectall">
+                                            <!-- <input checked type="checkbox" id="top_selectall"> -->
                                         </td>
                                         <td></td>
                                         <td>Product</td>
@@ -51,7 +51,7 @@
                                     <?php foreach ($cart as $key => $value) : ?>
                                     <tr>
                                         <td>
-                                            <input type="checkbox" class="selecteditem" checked name="ischecked[]">
+                                            <input type="checkbox" onclick="unCheck(this)" class="selecteditem" checked name="ischecked[]">
                                         </td>
                                         <td style="width: 10%;">
                                             <a href="<?php echo base_url('assets/upload/'.$value->foto); ?>" data-lightbox="image"><img class="image_fade" src="<?php echo base_url('assets/upload/'.$value->foto); ?>"></a>
@@ -64,11 +64,11 @@
                                         <td style="width: 15%;">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend" style="height: 30px;">
-                                                  <span class="input-group-text">-</span>
+                                                  <!-- <span class="input-group-text">-</span> -->
                                                 </div>
                                                 <input type="text" name="qty" value="<?=$value->qty?>" class="form-control" style="height: 30px; width: 55px; flex: none; text-align: center;">
                                                 <div class="input-group-append" style="height: 30px;">
-                                                  <span class="input-group-text">+</span>
+                                                  <!-- <span class="input-group-text">+</span> -->
                                                 </div>
                                               </div>
                                         </td>

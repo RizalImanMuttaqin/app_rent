@@ -159,5 +159,33 @@ class MyQuery extends CI_Model {
                 return $query->result();
         }
 
+        public function updateAdmin($data){
+                $sql = '
+                UPDATE m_admin t1 SET t1.email = ?, t1.phone = ?
+                WHERE t1.id = 1';
+                // echo "<pre>";
+                $query = $this->db->query($sql, [$data['email'], $data['phone']]);
+                return $query;
+        }
+
+        public function getAdmin(){
+                $sql = '
+                SELECT username, phone, email FROM m_admin t1
+                WHERE t1.id = 1';
+                // echo "<pre>";
+                $query = $this->db->query($sql);
+                return $query->row();
+        }
+
+        public function deleteOrder($id){
+                $id_user = $this->session->userdata('id_user');
+                $sql = '
+                UPDATE t_order t1 SET t1.status = 0
+                WHERE t1.id_order = ? AND t1.id_user = ?';
+                // echo "<pre>";
+                $query = $this->db->query($sql, [$id, $id_user]);
+                return $query;
+        }
+
 
 }

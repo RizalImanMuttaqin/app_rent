@@ -22,6 +22,7 @@ class Index extends CI_Controller {
 		$data['sliders'] = $this->ModMedia->get_media(0);
 		$data['profile'] = $this->ModProfile->get(6)->row();
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		// $data['beritas']= $this->MyQuery->get_limit('t_product', 'id_product', 2);
@@ -241,6 +242,7 @@ class Index extends CI_Controller {
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 
 		// if($this->input->get('search') != '' ){
 		// 	// // print_r($data['data']);
@@ -275,6 +277,7 @@ class Index extends CI_Controller {
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		$data['data']= $this->MyQuery->get_by_id('t_product', 'id_product', $id);
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 
 		$data['id']='id_product';
 		// print_r($data['data']);
@@ -288,6 +291,7 @@ class Index extends CI_Controller {
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['pengaduans']= $this->MyQuery->get('m_kategori_pengaduan');
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 
 		// print_r($data['pengaduans']);
 		// die();
@@ -358,7 +362,7 @@ class Index extends CI_Controller {
 			'email' => $this->input->post('email'),
 			'phone' => $this->input->post('phone'),
 			'password' => md5($this->input->post('password')),
-			'address' => $this->input->post('adress'),
+			'address' => $this->input->post('address'),
 			'date_updated'	=> date('Y-m-d h:i:s'),
 			'date_created' => date('Y-m-d h:i:s'),
 		);
@@ -384,6 +388,7 @@ class Index extends CI_Controller {
 		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 		$data['cart'] = $this->MyQuery->getCart();
 		$data['sub_total'] = array_sum(array_column($data['cart'], 'total_price'));
 		// print_r($xarr_new);
@@ -446,6 +451,8 @@ class Index extends CI_Controller {
 		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
+		$data['payment'] = $this->ModProfile->get(8)->row();
 		$data['orders'] = $this->ModTransaction->getOrderUser([1,2,3,4]);
 		// echo "<pre>";
 		// print_r($data['orders']);
@@ -459,6 +466,7 @@ class Index extends CI_Controller {
 		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 		$data['orders'] = $this->ModTransaction->getOrderUser([5]);
 		// echo "<pre>";
 		// print_r($data['orders']);
@@ -472,6 +480,7 @@ class Index extends CI_Controller {
 		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		$data['address'] = $this->ModProfile->get(7)->row();
+		$data['admin'] = $this->MyQuery->getAdmin(); 
 		$data['orders'] = $this->ModTransaction->getOrderUser([0, 6]);
 		// echo "<pre>";
 		// print_r($data['orders']);
@@ -577,5 +586,16 @@ class Index extends CI_Controller {
 			redirect($_SERVER['HTTP_REFERER']);
 		};
 
+	}
+
+	public function delete_order($id)
+	{
+		checkUserLogin();
+		$this->MyQuery->deleteOrder($id);
+		$this->session->set_flashdata('info', '<div class="alert alert-success alert-dismissible">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<h4><i class="icon fa fa-check"></i> Data berhasil dihapus</h4>
+				</div>');
+			redirect($_SERVER['HTTP_REFERER']);
 	}
 }
