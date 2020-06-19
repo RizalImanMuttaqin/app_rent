@@ -598,4 +598,44 @@ class Index extends CI_Controller {
 				</div>');
 			redirect($_SERVER['HTTP_REFERER']);
 	}
+
+	public function checkout(){
+		checkUserLogin();
+		$post = $this->input->post();
+		$total_harga = array_sum($post['total_price']);
+		$permitted_chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$order_code = str_pad($this->session->userdata('id_user'), 4, "0", STR_PAD_LEFT)."-".substr(str_shuffle($permitted_chars), 0, 6);
+		$data_order = array(
+			"id_user"		=> $this->session->userdata('id_user'),
+			"order_code" 	=> $order_code,
+			"status"	 	=> "1",
+			"read"		 	=> "2",
+			"total_harga"	=> $total_harga,
+			"date_created"	=> date('Y-m-d h:i:s'),
+			"date_updated"	=> date('Y-m-d h:i:s'),
+			
+		);
+
+		foreach ((array) $post as $key => $value) {
+			foreach($value as $i => $nvalue){
+				$tmp[$i][$key] = $nvalue;
+			}
+		}
+
+		// echo "<pre>";
+		// print_r($tmp);
+		// print_r($data_order);
+		// die();
+		$id_order = $this->MyQuery->insertWithLastId('t_order', $data_order);
+		if(!is_numeric($id_order)){
+			// print_r($last_id);
+			$this->session->set_flashdata('error', true);
+			return redirect($_SERVER['HTTP_REFERER']);
+			// die();
+		}
+		foreach ($tmp as $value) {
+				$this->MyQuery->checkout($value, $id_order);
+		}
+		return redirect($_SERVER['HTTP_REFERER']);
+	}
 }

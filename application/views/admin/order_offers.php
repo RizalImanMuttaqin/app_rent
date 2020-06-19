@@ -122,12 +122,12 @@
                                         <td colspan="5">
                                           <span><b>Description</b></span>
                                           <br>
-                                          <textarea name="description[]" rows="7" class="form-control" style="width: 100%;"></textarea>
+                                          <textarea name="description[<?=$product->id_cart?>]" rows="7" class="form-control" style="width: 100%;"></textarea>
                                         </td>
                                         <td>
-                                          <input type="hidden" name="id_cart[]" value="<?= $product->id_cart ?>">
+                                          <input type="hidden" name="id_cart[<?=$product->id_cart?>]" value="<?= $product->id_cart ?>">
                                           <span><b>Offer's Price</b></span>
-                                          <input name="offers[]" style="float: right; color: red; text-align: right;" id="discount_order" class="inputNumbers">
+                                          <input name="offers[<?=$product->id_cart?>]" style="float: right; color: red; text-align: right;" id="discount_order" class="inputNumbers">
                                         </td>
                                       </tr>
                                       <?php endforeach; ?>

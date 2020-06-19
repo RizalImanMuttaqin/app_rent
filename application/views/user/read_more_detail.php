@@ -123,7 +123,7 @@
 									</table>
 								</div>
 								<div class="col-md-12">
-									<button formaction="<?php echo base_url('index/add_cart');?>" class="btn btn-secondary">Add to Chart</button>
+									<button formaction="<?php echo base_url('index/add_cart');?>" class="btn btn-secondary">Add to Cart</button>
 									<button formaction="<?php echo base_url('index/add_order');?>" class="btn btn-info">Rent Product</button>
 								</div>
 

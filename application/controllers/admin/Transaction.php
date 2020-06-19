@@ -89,10 +89,11 @@ class Transaction extends CI_Controller {
 				$tmp[$nkey][$key] = $nvalue;
 			}
 		}
+		// print_r($tmp);
 		$total =0;
 		foreach($tmp as $data){
 			$this->ModTransaction->updateOffers($data);
-			$total += str_replace('.', '', $data['offers']);
+			$total += (int) str_replace('.', '', $data['offers']);
 		}
 		$this->ModTransaction->updateOrdersStatusOffers(3, $id_order, $total);
 		return redirect("/admin/transaction/offers");

@@ -135,6 +135,50 @@
 				}
 			})();
 
+			function countCart(data){
+				let total_days = moment.duration(moment(data.date[1], "DD-MM-YYYY").diff(moment(data.date[0], "DD-MM-YYYY"))).asDays() + 1;
+				let sum_crew = (Number(data.crew) * data.qty) * total_days;
+				let sum_prod = (Number(data.harga) * data.qty) * (total_days >= 7 ? total_days - 3 : total_days);
+				// $('#total_price').text(sum_prod + sum_crew).number(true, 0, ',', '.')
+				// $('#total_price_h').val(sum_prod + sum_crew)
+				const total = sum_prod + sum_crew;
+				return total;
+			}
+			$('.qty_i').on('change', function(){
+				const harga = $(this).closest('tr').find('.harga_sewa').text().split('.').join('');
+				const crew = $(this).closest('tr').find('.crew_sewa').text().split('.').join('');
+				const qty = $(this).val();
+				let date = $(this).closest('tr').find('.tgl_sewa').val().split(" - ");
+				let res = countCart({harga, qty, crew, date});
+				$(this).closest('tr').find('.total_price').text(res).number(true, 0, ',', '.')
+				$(this).closest('tr').find('.total_price_i').val(res)
+				let subtotal = 0;
+				$(".total_price_i").each(function(){
+					subtotal += Number($(this).val());
+				})
+				$('#subtotal').text(subtotal).number(true, 0, ',', '.')
+				$('#subtotal_i').text(subtotal)
+				// console.log(date)
+			})
+
+			$('.tgl_sewa').on('change', function(){
+				const harga = $(this).closest('tr').find('.harga_sewa').text().split('.').join('');
+				const crew = $(this).closest('tr').find('.crew_sewa').text().split('.').join('');
+				const qty = $(this).closest('tr').find('.qty_i').val();
+				let date = $(this).val().split(" - ");
+				// countCart({harga, qty, crew, date})
+				let res = countCart({harga, qty, crew, date});
+				$(this).closest('tr').find('.total_price').text(res).number(true, 0, ',', '.')
+				$(this).closest('tr').find('.total_price_i').val(res)
+				let subtotal = 0;
+				$(".total_price_i").each(function(){
+					subtotal += Number($(this).val());
+				})
+				$('#subtotal').text(subtotal).number(true, 0, ',', '.')
+				$('#subtotal_i').text(subtotal)
+				// console.log(date)
+			})
+
 			function countPrice() {
 				const harga = $('#harga_sewa').text().split('.').join('');
 				const crew = $('#crew_sewa').text().split('.').join('');
@@ -153,6 +197,12 @@
 			$("#bot_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#bot_selectall").prop("checked")))
 			function unCheck(e){
 				// console.log(e, "event")
+				if(e.value == 1){
+					e.value = 0;
+				}else{
+					e.value = 1;
+				}
+				console.log(e.value)
 				$("#bot_selectall").prop('checked', false);
 			}
 

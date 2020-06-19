@@ -187,5 +187,28 @@ class MyQuery extends CI_Model {
                 return $query;
         }
 
+        public function checkout($data, $id_order)
+        {
+                // echo "<pre>";
+                $id_user = $this->session->userdata('id_user');
+                $sql = '
+                UPDATE t_order_cart t1 SET t1.status = 2,
+                qty = ?, order_start_date = ?, order_end_date = ?,
+                total_price = ?, id_order = ?
+                WHERE t1.id_cart = ? AND t1.id_user = ?';
+                // echo "<pre>";
+                $query = $this->db->query($sql, [
+                        $data['qty'], 
+                        date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $data["tgl_sewa"])[0]))),
+                        date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $data["tgl_sewa"])[1]))), 
+                        $data['total_price'],
+                        $id_order,
+                        $data['id_cart'],
+                        $id_user
+                ]);
+                // print_r($data);
+                return $query;
+        }
+
 
 }
