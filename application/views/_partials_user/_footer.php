@@ -1,7 +1,9 @@
 		<!-- Footer
 		============================================= -->
 		<!-- <footer id="footer" class="dark"> -->
-		<footer id="footer" class="dark" style="background-color: #515875;">
+		<footer id="footer" class="dark" style="background-color: #fb8c00;">
+		<!-- <footer id="footer" class="dark" style="background-color: #515875;"> -->
+
 
 			<!-- Copyrights
 			============================================= -->
@@ -45,7 +47,7 @@
 
 							</div>
 
-							<i class="icon-headphones"></i> (021) 22323844
+							<i class="icon-phone"></i> <a style="color: white;" target="_blank" href="https://api.whatsapp.com/send?phone=<?=$admin->phone?>&text=Hallo,%20Ada%20yang%20ingin%20saya%20tanyakan%20tentang%20product%20Brainbox"><?=$admin->phone?></a>
 						</div>
 
 					</div>
@@ -97,7 +99,7 @@
 						icon: 'error',
 						title: 'Oops...',
 						text: 'Something went wrong!',
-						footer: '<a href="https://api.whatsapp.com/send?phone=6281280972009" target="_blank">Please contact administrator for this issue</a>'
+						footer: '<a href="https://api.whatsapp.com/send?phone=<?=$admin->phone?>" target="_blank">Please contact administrator for this issue</a>'
 					})
 				} else if (cart) {
 
@@ -127,11 +129,55 @@
 						cancelButtonText: '<i class=""></i> Continue',
 					}).then((result) => {
 						if (result.value) {
-							return window.location = "<?= base_url('index/order') ?>";
+							return window.location = "<?= base_url('index/order_on_process') ?>";
 						}
 					})
 				}
 			})();
+
+			function countCart(data){
+				let total_days = moment.duration(moment(data.date[1], "DD-MM-YYYY").diff(moment(data.date[0], "DD-MM-YYYY"))).asDays() + 1;
+				let sum_crew = (Number(data.crew) * data.qty) * total_days;
+				let sum_prod = (Number(data.harga) * data.qty) * (total_days >= 7 ? total_days - 3 : total_days);
+				// $('#total_price').text(sum_prod + sum_crew).number(true, 0, ',', '.')
+				// $('#total_price_h').val(sum_prod + sum_crew)
+				const total = sum_prod + sum_crew;
+				return total;
+			}
+			$('.qty_i').on('change', function(){
+				const harga = $(this).closest('tr').find('.harga_sewa').text().split('.').join('');
+				const crew = $(this).closest('tr').find('.crew_sewa').text().split('.').join('');
+				const qty = $(this).val();
+				let date = $(this).closest('tr').find('.tgl_sewa').val().split(" - ");
+				let res = countCart({harga, qty, crew, date});
+				$(this).closest('tr').find('.total_price').text(res).number(true, 0, ',', '.')
+				$(this).closest('tr').find('.total_price_i').val(res)
+				let subtotal = 0;
+				$(".total_price_i").each(function(){
+					subtotal += Number($(this).val());
+				})
+				$('#subtotal').text(subtotal).number(true, 0, ',', '.')
+				$('#subtotal_i').text(subtotal)
+				// console.log(date)
+			})
+
+			$('.tgl_sewa').on('change', function(){
+				const harga = $(this).closest('tr').find('.harga_sewa').text().split('.').join('');
+				const crew = $(this).closest('tr').find('.crew_sewa').text().split('.').join('');
+				const qty = $(this).closest('tr').find('.qty_i').val();
+				let date = $(this).val().split(" - ");
+				// countCart({harga, qty, crew, date})
+				let res = countCart({harga, qty, crew, date});
+				$(this).closest('tr').find('.total_price').text(res).number(true, 0, ',', '.')
+				$(this).closest('tr').find('.total_price_i').val(res)
+				let subtotal = 0;
+				$(".total_price_i").each(function(){
+					subtotal += Number($(this).val());
+				})
+				$('#subtotal').text(subtotal).number(true, 0, ',', '.')
+				$('#subtotal_i').text(subtotal)
+				// console.log(date)
+			})
 
 			function countPrice() {
 				const harga = $('#harga_sewa').text().split('.').join('');
@@ -147,8 +193,18 @@
 				return false;
 			}
 
-			$("#top_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#top_selectall").prop("checked")))
+			// $("#top_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#top_selectall").prop("checked")))
 			$("#bot_selectall").click(() => $("input[type='checkbox']").prop("checked", $("#bot_selectall").prop("checked")))
+			function unCheck(e){
+				// console.log(e, "event")
+				if(e.value == 1){
+					e.value = 0;
+				}else{
+					e.value = 1;
+				}
+				console.log(e.value)
+				$("#bot_selectall").prop('checked', false);
+			}
 
 			// let offers = null;
 			const offers = "<?php echo $this->session->flashdata('submit_offers') ?>";
@@ -168,7 +224,7 @@
 					if (result.value) {
 						let msg = "Saya ingin mengajukan penawaran untuk id Order " + offers.split(" ").join("%20")
 						console.log(msg)
-						return window.open("https://api.whatsapp.com/send?phone=6281280972009&text=" + msg, "_blank");
+						return window.open("https://api.whatsapp.com/send?phone=<?=$admin->phone?>&text=" + msg, "_blank");
 					}
 				})
 			}

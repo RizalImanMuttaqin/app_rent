@@ -83,9 +83,20 @@ class Transaction extends CI_Controller {
 	}
 
 	public function update_offers($id_order){
-
-		$this->ModTransaction->updateOrdersStatusOffers(3, $id_order, $this->input->get('discount'));
-		return redirect($_SERVER['HTTP_REFERER']);
+		$post = $this->input->post();
+		foreach ($post as $key => $value) {
+			foreach ((array)$value as $nkey => $nvalue) {
+				$tmp[$nkey][$key] = $nvalue;
+			}
+		}
+		// print_r($tmp);
+		$total =0;
+		foreach($tmp as $data){
+			$this->ModTransaction->updateOffers($data);
+			$total += (int) str_replace('.', '', $data['offers']);
+		}
+		$this->ModTransaction->updateOrdersStatusOffers(3, $id_order, $total);
+		return redirect("/admin/transaction/offers");
 	}
 
 }

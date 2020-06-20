@@ -1,4 +1,3 @@
-
 <!-- jQuery 3 -->
 <script src="<?php echo base_url('assets/admin_template/bower_components/jquery/dist/jquery.min.js'); ?>"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -40,39 +39,46 @@
 <script src="<?php echo base_url('assets/admin_template/bower_components/number/jquery.number.min.js'); ?>"></script>
 
 <script type="text/javascript">
-function readURL(input) {
+  function readURL(input) {
 
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
 
-    reader.onload = function(e) {
-      $('#imgPre').attr('src', e.target.result);
+      reader.onload = function(e) {
+        $('#imgPre').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
     }
-
-    reader.readAsDataURL(input.files[0]);
   }
-}
 
-$("#imgInp").change(function() {
-  readURL(this);
-});
+  function chatWa(cmsg, number) {
+    number = number.replace('08', '628')
+    // console.log(number, "before")
+    let msg = "Hallo Admin Brainbox disini. " + cmsg.split(" ").join("%20")
+    console.log(msg)
+    return window.open(`https://api.whatsapp.com/send?phone=${number}&text=${msg}`, "_blank");
+  }
 
-$('#password, #confirm_password').on('keyup', function () {
-	if ($('#password').val() == $('#confirm_password').val()) {
-		$('#message').html('Password cocok').css('color', 'green');
-		$('#btn_pass').attr('disabled', false);
-	} else {
-		$('#message').html('Password tidak sesuai').css('color', 'red');
-		$('#btn_pass').attr('disabled', true);
-	}
-});
+  $("#imgInp").change(function() {
+    readURL(this);
+  });
 
-$('.formatNumbers').number( true, 0, ',', '.')
-$('.inputNumbers').number( true, 0, ',', '.')
+  $('#password, #confirm_password').on('keyup', function() {
+    if ($('#password').val() == $('#confirm_password').val()) {
+      $('#message').html('Password cocok').css('color', 'green');
+      $('#btn_pass').attr('disabled', false);
+    } else {
+      $('#message').html('Password tidak sesuai').css('color', 'red');
+      $('#btn_pass').attr('disabled', true);
+    }
+  });
 
-$('.datepicker').datepicker({
-  format: 'dd-mm-yyyy'
-})
+  $('.formatNumbers').number(true, 0, ',', '.')
+  $('.inputNumbers').number(true, 0, ',', '.')
 
+  $('.datepicker').datepicker({
+    format: 'dd-mm-yyyy'
+  })
 </script>
-  <?php echo (isset($js)) ? $js : ''; ?>
+<?php echo (isset($js)) ? $js : ''; ?>

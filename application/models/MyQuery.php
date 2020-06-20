@@ -159,5 +159,56 @@ class MyQuery extends CI_Model {
                 return $query->result();
         }
 
+        public function updateAdmin($data){
+                $sql = '
+                UPDATE m_admin t1 SET t1.email = ?, t1.phone = ?
+                WHERE t1.id = 1';
+                // echo "<pre>";
+                $query = $this->db->query($sql, [$data['email'], $data['phone']]);
+                return $query;
+        }
+
+        public function getAdmin(){
+                $sql = '
+                SELECT username, phone, email FROM m_admin t1
+                WHERE t1.id = 1';
+                // echo "<pre>";
+                $query = $this->db->query($sql);
+                return $query->row();
+        }
+
+        public function deleteOrder($id){
+                $id_user = $this->session->userdata('id_user');
+                $sql = '
+                UPDATE t_order t1 SET t1.status = 0
+                WHERE t1.id_order = ? AND t1.id_user = ?';
+                // echo "<pre>";
+                $query = $this->db->query($sql, [$id, $id_user]);
+                return $query;
+        }
+
+        public function checkout($data, $id_order)
+        {
+                // echo "<pre>";
+                $id_user = $this->session->userdata('id_user');
+                $sql = '
+                UPDATE t_order_cart t1 SET t1.status = 2,
+                qty = ?, order_start_date = ?, order_end_date = ?,
+                total_price = ?, id_order = ?
+                WHERE t1.id_cart = ? AND t1.id_user = ?';
+                // echo "<pre>";
+                $query = $this->db->query($sql, [
+                        $data['qty'], 
+                        date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $data["tgl_sewa"])[0]))),
+                        date('Y-m-d', strtotime(str_replace('/', '-', explode(" - ", $data["tgl_sewa"])[1]))), 
+                        $data['total_price'],
+                        $id_order,
+                        $data['id_cart'],
+                        $id_user
+                ]);
+                // print_r($data);
+                return $query;
+        }
+
 
 }

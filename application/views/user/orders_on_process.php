@@ -14,7 +14,8 @@
 
 </section>
 
-<section id="content">
+<section>
+  <!-- <section id="content"> -->
 
   <div class="content-wrap">
 
@@ -28,7 +29,10 @@
         </div>
         <div class="col-md-12">
           <h3><i class="icon-tags"></i> Order On Process</h3>
-          <p>Lakukan pembayaran menggunakan bla . . . . . . </p>
+          <h4><?= $payment->judul ?></h4>
+          <span style="line-height: 0;">
+            <?php echo $payment->konten; ?>
+          </span>
         </div>
 
         <?php if (!$orders) : ?>
@@ -69,9 +73,15 @@
                       </b></div>
                     <div class="col-md-3">
                       <ul class="list-unstyled">
-                        <li><span style="padding-right: 10%;">Total (Rp)</span> <b style="float: right;" class="formatNumbers"><?= $value->total_harga ?></b></li>
-                        <li><span style="padding-right: 10%;">Discount (Rp)</span> <b style="float: right; color: red;" class="formatNumbers"><?= $value->potongan_harga ?></b></li>
-                        <li><span style="padding-right: 10%;">Total Ammount (Rp)</span> <b style="float: right; color: green;" class="formatNumbers"><?= ($value->total_harga - $value->potongan_harga) ?></b></li>
+                        <li><span style="padding-right: 10%;">Total (Rp)</span> <b style="float: right;" class="formatNumbers"><?= $value->total_harga ?></b>
+                        </li>
+                        <li>
+                          <span style="padding-right: 10%;">Admin Offers (Rp)</span> <b style="float: right; color: green;" class="formatNumbers"><?= ($value->potongan_harga) ?></b>
+                        </li>
+                        <li>
+                          <span style="padding-right: 10%;">Discount (Rp)</span>
+                          <b style="float: right; color: red;" class="formatNumbers"><?= $value->potongan_harga ? $value->total_harga - $value->potongan_harga : "" ?></b>
+                        </li>
                       </ul>
                     </div>
                     <div class="col-md-2 pull-right">
@@ -80,7 +90,7 @@
                       <?php if ($st == 1) :  ?>
                         <a href="<?= base_url('index/order_submit_offers/' . $value->id_order) ?>" class="btn btn-sm btn-success col-md-12 mt-2">Submit Offer</a>
                       <?php endif; ?>
-                      <!-- <button type="button" class="btn btn-sm btn-success col-md-12">Cancel Ordet</button> -->
+                      <button type="button" onclick="cancelOrder('<?=$value->id_order?>')" class="btn btn-sm btn-danger col-md-12 mt-2">Cancel Order</button>
                     </div>
                   </div>
                 </div>
@@ -96,7 +106,8 @@
                           <td>Rental Price / Day</td>
                           <td>Qty</td>
                           <td>Rental Date</td>
-                          <td>Total Price</td>
+                          <!-- <td>Total Price</td> -->
+                          <td>Total Price / Admin Offers</td>
                         </tr>
                       </thead>
                       <tbody>
@@ -120,7 +131,21 @@
                             <td style="width: 20%;">
                               <input type="text" readonly value="<?= date('d/m/Y', strtotime($product->order_start_date)) . " - " . date('d/m/Y', strtotime($product->order_end_date)) ?>" class="form-control" style="flex: none; width: 210px; height: 30px;">
                             </td>
-                            <td style="width: 15%;">Rp. <b class="formatNumbers"><?= $product->total_price ?></b></td>
+                            <td style="width: 15%;">
+                              Rp. <b class="formatNumbers"><?= $product->total_price ?></b>
+                              <br>
+                              Rp. <b class="formatNumbers" style="color:green"><?= $product->offer_price ?></b>
+                            </td>
+                            <!-- <td style="width: 15%;">Rp. <b class="formatNumbers"><?= $product->total_price ?></b></td> -->
+                          </tr>
+                          <tr>
+                            <td colspan="6">
+                              <span><b>Description</b></span>
+                              <br>
+                              <!-- <textarea  rows="7" class="form-control" style="width: 100%;"> -->
+                              <?= $product->description ?>
+                              <!-- </textarea> -->
+                            </td>
                           </tr>
                         <?php endforeach; ?>
                       </tbody>
@@ -209,4 +234,13 @@
     };
     reader.readAsDataURL(event.target.files[0]);
   };
+
+  function cancelOrder(id) {
+    if (confirm('Are you sure to cancel this orders?')) {
+      console.log(id)
+       window.location.href = `<?= base_url('index/delete_order/${id}'); ?>`
+    } else {
+      return false;
+    }
+  }
 </script>

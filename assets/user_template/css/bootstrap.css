@@ -2605,14 +2605,15 @@ fieldset:disabled a.btn {
 
 .btn-info {
   color: #fff;
-  background-color: #17a2b8;
-  border-color: #17a2b8;
+  /* background-color: #17a2b8; */
+  background-color: #ff9100;
+  border-color: #ffffff;
 }
 
 .btn-info:hover {
   color: #fff;
-  background-color: #138496;
-  border-color: #117a8b;
+  background-color: #ffac33;
+  border-color: #ffffff;
 }
 
 .btn-info:focus, .btn-info.focus {

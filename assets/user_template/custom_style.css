@@ -38,11 +38,11 @@
 
 .portfolio-filter li:last-child a { border-radius: 0 4px 4px 0; }
 
-.portfolio-filter li a:hover { color: #1ABC9C; }
+.portfolio-filter li a:hover { color: #ff9100; }
 
 .portfolio-filter li.activeFilter a {
 	color: #FFF !important;
-	background-color: #1ABC9C;
+	background-color: #ff9100;
 	margin: -1px 0;
 	padding: 13px 18px;
 	font-weight: bold;
@@ -94,8 +94,8 @@
 .portfolio-filter.style-3 li a { border: 1px solid transparent; }
 
 .portfolio-filter.style-3 li.activeFilter a {
-	color: #1ABC9C !important;
-	border-color: #1ABC9C;
+	color: #ff9100 !important;
+	border-color: #ff9100;
 	background-color: transparent;
 	margin: 0;
 }
@@ -134,7 +134,7 @@
 .portfolio-filter.style-4 li.activeFilter a:after {
 	width: 100%;
 	left: 0%;
-	background-color: #1ABC9C;
+	background-color: #ff9100;
 }
 
 
@@ -169,7 +169,7 @@
 }
 
 .portfolio-shuffle:hover {
-	background-color: #1ABC9C;
+	background-color: #ff9100;
 	color: #FFF;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
@@ -236,7 +236,7 @@ body:not(.device-touch):not(.device-sm):not(.device-xs) .portfolio-notitle .port
 
 .portfolio-desc h3 a { color: #222; }
 
-.portfolio-desc h3 a:hover { color: #1ABC9C; }
+.portfolio-desc h3 a:hover { color: #ff9100; }
 
 .portfolio-desc span {
 	display: block;
@@ -964,7 +964,7 @@ body:not(.device-touch):not(.device-sm):not(.device-xs) .portfolio-overlay a {
 .iportfolio:hover a.center-icon { opacity: 1; }
 
 .portfolio-overlay a:hover {
-	color: #1ABC9C;
+	color: #ff9100;
 	background-color: #EEE;
 }
 
@@ -1275,7 +1275,7 @@ body.device-touch.device-xs .portfolio-notitle .portfolio-overlay { display: non
 
 #portfolio-navigation a:first-child { margin-left: 0; }
 
-#portfolio-navigation a:hover { color: #1ABC9C; }
+#portfolio-navigation a:hover { color: #ff9100; }
 
 #portfolio-ajax-show #portfolio-navigation {
 	top: 0;
@@ -1356,7 +1356,7 @@ body.device-touch.device-xs .portfolio-notitle .portfolio-overlay { display: non
 
 .entry-title h2 a { color: #333; }
 
-.entry-title h2 a:hover { color: #1ABC9C; }
+.entry-title h2 a:hover { color: #ff9100; }
 
 .entry-meta {
 	margin: 10px -10px -15px 0;
@@ -1391,7 +1391,7 @@ body.device-touch.device-xs .portfolio-notitle .portfolio-overlay { display: non
 
 .entry-meta li a { color: #999; }
 
-.entry-meta li a:hover { color: #1ABC9C; }
+.entry-meta li a:hover { color: #ff9100; }
 
 .entry-meta li:first-child:before { display: none; }
 
@@ -1434,7 +1434,7 @@ body:not(.device-touch) .entry-link {
 
 .entry-link:hover {
 	color: #FFF;
-	background-color: #1ABC9C;
+	background-color: #ff9100;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
 }
 
@@ -1713,6 +1713,6 @@ body:not(.device-touch) .entry-link {
 
 .post-timeline .entry:hover .entry-timeline,
 .post-timeline .entry:hover .timeline-divider {
-	border-color: #1ABC9C;
-	color: #1ABC9C;
+	border-color: #ff9100;
+	color: #ff9100;
 }

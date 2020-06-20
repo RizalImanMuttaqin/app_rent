@@ -23,7 +23,7 @@
           <div class="col-md-12">
             <div class="box box-info">
                 <div class="box-header">
-                  <?php if($profile->id == 6) : ?>
+                  <?php if($profile->id == 6 || $profile->id == 8) : ?>
                     <h3 class="box-title">
                     <input type="text" name="judul" class="form" value="<?php echo $profile->judul ?>">
                   </h3>
@@ -56,8 +56,18 @@
                 <div class="col-md-12">
                   <textarea class="ckeditor" name="konten" rows="15" cols="80">
                     <?php echo $profile->konten ?>
-                  </textarea>
+                  </textarea>                  
                 </div>
+                <?php if($profile->id == 6) :?>
+                <div class="col-md-3" style="padding-top: 20px;">
+                  <span style="font-weight: bold;">Email</span>
+                  <input type="text" name="email" value="<?=$admin->email?>" class="form-control">
+                </div>
+                <div class="col-md-3" style="padding-top: 20px;">
+                  <span style="font-weight: bold;">Phone</span>
+                  <input type="text" name="phone" value="<?=$admin->phone?>" class="form-control">
+                </div>
+                <?php endif; ?>
                 <div class="col-md-12" style="padding-top: 30px">
                   <button type="submint" class="btn btn-primary pull-right">Simpan</button>
                 </div>

@@ -59,7 +59,7 @@
 						
 						<div class="col_full">
 							<label for="template-contactform-message">Address <small></small></label>
-							<textarea class="required sm-form-control" id="template-contactform-message" name="pesan" rows="6" cols="30"></textarea>
+							<textarea class="required sm-form-control" id="template-contactform-message" name="address" rows="6" cols="30"></textarea>
 						</div>
 							<div class="col_full">
 								<button class="button button-3d nomargin" type="submit">Submit</button>
