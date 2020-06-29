@@ -84,7 +84,7 @@ class ModTransaction extends CI_Model
         $sql = '
         SELECT t1.*, t2.name, t2.phone, t2.email FROM t_order t1 
         LEFT JOIN m_users t2 ON t1.id_user = t2.id  
-        WHERE id_user = ? AND order_code = ?
+        WHERE id_user = ? AND order_code = ? AND t1.status = 5
         ORDER BY t1.id_order DESC';
         // echo "<pre>";
         $query = $this->db->query($sql, [$id_user, $order_code]);
@@ -96,7 +96,7 @@ class ModTransaction extends CI_Model
         $sql = '
         SELECT t1.*, t2.name, t2.phone, t2.email FROM t_order t1 
         LEFT JOIN m_users t2 ON t1.id_user = t2.id  
-        WHERE order_code = ?
+        WHERE order_code = ? AND t1.status = 5
         ORDER BY t1.id_order DESC';
         // echo "<pre>";
         $query = $this->db->query($sql, [$order_code]);
