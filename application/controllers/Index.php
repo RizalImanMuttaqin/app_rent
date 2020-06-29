@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ob_start();
+
 class Index extends CI_Controller {
 
 	function __construct() {
@@ -26,7 +27,7 @@ class Index extends CI_Controller {
 		$data['artikels']= $this->MyQuery->get_limit('t_artikel', 'id_artikel', 6);
 		$data['kegiatans']= $this->MyQuery->get_limit('t_kegiatan', 'id_kegiatan', 2);
 		// $data['beritas']= $this->MyQuery->get_limit('t_product', 'id_product', 2);
-		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false);
+		$data['kategoris']= $this->MyQuery->get_limit('m_kategori', 'id_kategori', false, "asc");
 		$data['newss'] = $this->MyQuery->get_limit('t_product', 'id_product', 2);
 		// // $data['sliders'] = $this->MyQuery->get();
 		// echo "<pre>";
@@ -637,5 +638,15 @@ class Index extends CI_Controller {
 				$this->MyQuery->checkout($value, $id_order);
 		}
 		return redirect($_SERVER['HTTP_REFERER']);
+	}
+
+	public function invoice($order_code)
+	{
+		checkUserLogin();
+		$this->load->library('Pdfgenerator');
+		$data['order'] = $this->ModTransaction->getPrintPdf($order_code);
+
+		$this->pdfgenerator->generate('_templates/print_order', $data, "inovice_".$order_code);
+		// $this->load->view('_templates/print_order', $data);
 	}
 }

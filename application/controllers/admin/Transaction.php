@@ -99,4 +99,13 @@ class Transaction extends CI_Controller {
 		return redirect("/admin/transaction/offers");
 	}
 
+	public function invoice($order_code)
+	{
+		$this->load->library('Pdfgenerator');
+		$data['order'] = $this->ModTransaction->getPrintPdfAdmin($order_code);
+
+		$this->pdfgenerator->generate('_templates/print_order', $data, "inovice_".$order_code);
+		// $this->load->view('_templates/print_order', $data);
+	}
+
 }

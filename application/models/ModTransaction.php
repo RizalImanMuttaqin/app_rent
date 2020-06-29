@@ -77,4 +77,29 @@ class ModTransaction extends CI_Model
         $query = $this->db->query($sql, [$data['description'], str_replace('.', '', $data['offers']), $data['id_cart']]);
         return $query;
     }
+
+    public function getPrintPdf($order_code)
+    {
+        $id_user = $this->session->userdata('id_user');
+        $sql = '
+        SELECT t1.*, t2.name, t2.phone, t2.email FROM t_order t1 
+        LEFT JOIN m_users t2 ON t1.id_user = t2.id  
+        WHERE id_user = ? AND order_code = ?
+        ORDER BY t1.id_order DESC';
+        // echo "<pre>";
+        $query = $this->db->query($sql, [$id_user, $order_code]);
+        return $query->row();
+    }
+
+    public function getPrintPdfAdmin($order_code)
+    {
+        $sql = '
+        SELECT t1.*, t2.name, t2.phone, t2.email FROM t_order t1 
+        LEFT JOIN m_users t2 ON t1.id_user = t2.id  
+        WHERE order_code = ?
+        ORDER BY t1.id_order DESC';
+        // echo "<pre>";
+        $query = $this->db->query($sql, [$order_code]);
+        return $query->row();
+    }
 }

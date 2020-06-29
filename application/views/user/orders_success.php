@@ -78,10 +78,11 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-2 pull-right">
-                                            <!-- <button type="button" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></button> -->
                                             <?php if ($value->bukti_tf) : ?>
                                                 <a class="btn btn-sm btn-default col-md-12" href="<?php echo base_url('assets/upload/payment/' . $value->bukti_tf); ?>" data-lightbox="image"><small>View Payment Slip</small></a>
                                             <?php endif; ?>
+                                            <br><br>
+                                            <a href="<?=base_url('index/invoice/'. $value->order_code)?>" class="btn btn-sm btn-success col-md-12" target="_blank" style="color: white !important;"><small>Print Invoice</small></a>
                                         </div>
                                     </div>
                                 </div>

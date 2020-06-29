@@ -132,6 +132,9 @@
                       </td>
                       <td>
                         <a href="<?= $value->bukti_tf ? base_url('assets/upload/payment/' . $value->bukti_tf) : "#" ?>" target="<?= $value->bukti_tf ? '_blank' : '' ?>" role="button" class="btn btn-sm btn-default col-md-12"><small>View Payment Slip</small></a>
+                        <br><br>
+                        <a href="<?=base_url('admin/transaction/invoice/'. $value->order_code)?>" class="btn btn-sm btn-success col-md-12" target="_blank" style="color: white !important;"><small>Print Invoice</small></a>
+                        
                       </td>
                     </tr>
 

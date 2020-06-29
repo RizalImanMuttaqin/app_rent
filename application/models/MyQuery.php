@@ -35,7 +35,7 @@ class MyQuery extends CI_Model {
                 return $query->row();
         }
 
-        public function get_limit($table, $pk, $limit)
+        public function get_limit($table, $pk, $limit, $order="desc")
         {
                 $this->db->select('*');
                 $this->db->from($table);
@@ -46,7 +46,7 @@ class MyQuery extends CI_Model {
                 if ($limit != false) {
                         $this->db->limit($limit);
                 }
-                $this->db->order_by($pk,"desc");
+                $this->db->order_by($pk,$order);
                 $query = $this->db->get();
                 return $query->result();
         }
